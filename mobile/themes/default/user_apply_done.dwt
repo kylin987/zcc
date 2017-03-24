@@ -1,0 +1,26 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<div class="con">
+  
+  <section class="ect-bg-colorf ect-padding-lr flow-done">
+  		<i class="glyphicon glyphicon-ok"></i>
+		<p class="ect-margin-tb">您的合伙人申请已经提交成功，请通过下面的支付按钮进行支付</p>
+        <p class="ect-margin-tb">您的应付款金额为: <b>{$daili_amount}</b></p>
+        
+      
+       <p class="ect-margin-tb text-center">{$pay_online}</p><br>
+       <div class="input-text"><br><B>特别说明:</B><br>			
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入股金转账至公司的用户，在“备注”描述后，不需要在微信支付！</div>
+       <b><p class="ect-margin-tb text-center">您可以直接 <a href="{:url('index/index')}">返回首页</a> 或去 <a href="{:url('user/index')}">用户中心</a></p></b>
+  </section>
+
+<div style="padding-bottom:4.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+</body>
+</html>

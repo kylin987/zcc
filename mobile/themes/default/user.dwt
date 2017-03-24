@@ -1,0 +1,222 @@
+﻿<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+
+<div class="user-share-user">
+<div class="user-share-info">
+	<div class="img k_headimg">{if $info.u_headimg}<img src="{$info.u_headimg}">{elseif $info.headimgurl}<img src="{$info.headimgurl}">{else}<img src="../../../__TPL__/images/moren.png"/>{/if}</div>
+	<div class="k_text"> 
+	    <p class="k_nicheng">{if $info.nicheng}{$info.nicheng}{elseif $info.nickname}{$info.nickname}{else}{$info.username}{/if}</p>				
+		<!--<p class="k_rankname"><a href="{:url('user/edit_password')}" class="k_hongbao">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:url('user/logout')}" class="ect-colorf">{$lang.label_logout}</a></p>-->
+		<p class="k_hongbao">{$rank_name}{if $proxy_area} | {$proxy_area}总代理{/if}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:url('user/logout')}" class="ect-colorf k_rankname">{$lang.label_logout}</a></p> 
+
+		<p class="k_recode">邀请口令：{$t_re_code}</p>
+       
+	  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="4" class="k_hongbao" background="__TPL__/images/grzzbj01.png" >
+		  <tr>
+		    <td width="33%" height="55" align="center" valign="middle" class="k_hongbao"><a href="{:url('user/account_detail')}" class="k_hongbao">余额</a>(元)<br>
+		       {$info.surplus|default:0} <!--&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{:url('user/account_deposit')}" class="k_hongbao">充值</a> | <a href="{:url('user/account_raply')}" class="k_hongbao">提现</a>--></td>
+		    <td width="34%" height="55" align="center" valign="middle" class="k_hongbao">平台市值(元)<br>
+	        {$market_value}</td>
+		    <td width="33%" height="55" align="center" valign="middle" class="k_hongbao">平台市盈率<br>{$pe_ratios}</td>
+	      </tr>
+	  </table>
+		
+		{if $user_rank_id eq '1'}
+			{if $frozen_premium}
+	  <p class="k_hongbao" style="color:#222222"><b><a style="color:#222222" href="{:url('user/account_raply')}" class="k_hongbao">冻结入股金：</a>{$frozen_premium}(元) | <a style="color:#222222" href="{:url('user/account_raply')}">提现/转余额</a></b></p>
+			{else}
+	  <p class="k_hongbao"><b><a href="{:url('user/apply_sale')}" style="color:#222222" >申请成为合伙人</a></b></p>
+			<p>{/if}
+            
+		{elseif $user_rank_id eq '138' or $user_rank_id eq '144'} </p>
+		<p class="k_recode">合伙人每月/份任务：{$assess_value}</p>
+	  
+	  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="4" class="k_hongbao" background="__TPL__/images/grzzbj01.png" >
+		  <tr>
+		    <td width="33%" height="55" align="center" valign="middle" class="k_hongbao">平台纯利润(元)<br>
+{$pure_profit}</td>
+		    <td width="34%" align="center" valign="middle" class="k_hongbao">平台入股金(元)<br>
+	        {$all_premium}</td>
+		    <td width="33%" align="center" valign="middle" class="k_hongbao">未分配利润(元)<br>
+	        {$no_dis_profit}</td>
+        </tr>
+	  </table>
+
+<!--{foreach name=user_stock from=$user_stock item=vo}-->
+	  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="4" class="k_hongbao" background="__TPL__/images/grzzbj01.png" >
+        <tr>
+          <td width="33%" height="55" align="center" valign="middle" class="k_hongbao">{if $vo.is_first}入股金(初始/元){else}入股金(追/元){/if}<br>
+            {$vo.user_premium}</td>
+          <td width="34%" align="center" valign="middle" class="k_hongbao">入股时间<br>{$vo.premium_time}</td>
+          <td width="33%" align="center" valign="middle" class="k_hongbao">入股金价值(元)<br>
+            {$vo.last_stock}</td>
+        </tr>
+        
+        <tr>
+          <td width="33%" height="55" align="center" valign="middle" class="k_hongbao">任务达成(元)<br>
+{$vo.now_assess_value}</td>
+          <td width="34%" align="center" valign="middle" class="k_hongbao">{if $vo.is_first}<b><a href="{:url('user/apply_index')}" style="color:#222222" >合伙人协议</a></b>{if $frozen_premium}<br>
+          <b><a href="{:url('user/account_raply')}" style="color:#222222" >冻结入股金：{$frozen_premium}(元)</a></b>{else}{if $done_stock}<br><b><a href='{:url('user/add_stock')}' style="color:#222222">追加入股金</a></b>{/if}{/if}{/if}</td>
+          <td width="33%" align="center" valign="middle" class="k_hongbao">年度达标还需(元)<br>
+            {$vo.year_assess_value}</td>
+        </tr>
+      </table>
+<!--{/foreach}-->      
+
+	  {/if}
+	</div>
+</div>
+</div>
+<section class="container-fluid user-nav">
+  <ul class="row ect-row-nav text-center">
+  	<a href="{:url('user/order_list')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc01.png"></i>
+      <p class="text-center">{$lang.order_list_lnk}</p>
+    </li>
+    </a> 
+	<a href="{:url('user/profile')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc02.png"></i>
+      <p class="text-center">{$lang.profile}</p>
+    </li>
+    </a> 
+   
+	<a href="{:url('user/address_list')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc03.png"></i>
+      <p class="text-center">{$lang.label_address}</p>
+    </li>
+    </a>
+    	
+    	<!--<a href="{:url('user/edit_password')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc04.png"></i>
+      <p class="text-center">修改密码</p>
+    </li>
+    </a>-->
+
+	<a href="{:url('user/service')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc05.png"></i>
+      <p class="text-center">咨询留言</p>
+    </li>
+    </a> 
+    
+	<!--<a href="{:url('user/spree')}">
+    <li class="col-sm-3 col-xs-3"><i class="glyphicon glyphicon-gift"></i>
+      <p class="text-center">我的大礼包</p>
+    </li>
+    </a>-->
+	
+     <a href="{:url('sale/line')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc06.png"></i>
+      <p class="text-center">{$lang.wodebuluo}</p>
+    </li>
+    </a>
+
+	
+	<!--<a href="{:url('sale/order_list')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc07.png"></i>
+      <p class="text-center">客户订单</p>
+    </li>
+    </a>-->
+	
+	<a href="{:url('erwei/to_sale')}&sale={$user_id}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc08.png"></i>
+      <p class="text-center">我的二维码</p>
+    </li>
+    </a>
+	  
+	<a href="{:url('user/transfer_surplus')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc09.png"></i>
+      <p class="text-center">余额转账</p>
+    </li>
+    </a>
+		
+	<a href="{:url('user/account_detail')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc10.png"></i>
+      <p class="text-center">资产管理</p>
+    </li>
+    </a>	
+    
+    	<a href="{:url('article/index')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc11.png"></i>
+      <p class="text-center">资讯公告</p>
+    </li>
+    </a>	
+
+	<a href="{:url('erwei/per_qrcode')}&sale={$user_id}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc12.png"></i>
+      <p class="text-center">个性二维码</p>
+    </li>
+    </a>
+    
+   	<a href="{:url('#')}&sale={$user_id}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc13.png"></i>
+      <p class="text-center">敬请期待</p>
+    </li>
+    </a>
+ 
+    	<a href="{:url('#')}&sale={$user_id}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/grzx/a_zc13.png"></i>
+      <p class="text-center">敬请期待</p>
+    </li>
+    </a>
+
+
+    	<!--<a href="{:url('#')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/a_zc03.png"></i>
+      <p class="text-center">平台总资产</p>
+    </li>
+    </a>	
+
+    	<a href="{:url('#')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/a_zc04.png"></i>
+      <p class="text-center">平台未分配利润</p>
+    </li>
+    </a>	
+
+    	<a href="{:url('#')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/a_zc05.png"></i>
+      <p class="text-center">平台入股金总额</p>
+    </li>
+    </a>	
+
+    	<a href="{:url('#')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/a_zc06.png"></i>
+      <p class="text-center">平台纯利润</p>
+    </li>
+    </a>	
+    
+   <a href="{:url('user/transfer_coin')}">
+    <li class="col-sm-3 col-xs-3"><i><img src="__TPL__/images/a_djq.png"></i>
+      <p class="text-center">代金券转账</p>
+    </li>
+    </a> -->	 
+  </ul>
+</section>
+<!-- <div class="article-list2"> 
+  <div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-1.png" /></p>
+	</div>
+  <div class="article-list-ol2">
+    <div id="J_ItemList">
+      <dl class="single_item"> </dl>
+      <a href="javascript:;" class="get_more"></a>
+    </div>
+  </div> -->
+  
+
+</div>
+
+  <footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:5.5em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<script type="text/javascript">
+	get_asynclist("{:url('article/asynclist2', array('id'=>$this->_var['id'], 'page'=>$this->_var['page'], 'sort'=>$this->_var['sort'], 'keywords'=>$this->_var['keywords']))}" , '__TPL__/images/loader.gif');
+	var notice = '{$notice}';
+	if(notice == '1'){
+		alert('尊敬的合伙人您好！您本月业绩尚未达标，请尽快达成！以免影响您的收益！');
+	}	
+</script>
+</body>
+</html>

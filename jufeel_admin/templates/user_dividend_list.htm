@@ -1,0 +1,68 @@
+<!-- {if $full_page} -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+{if $smarty.get.auid}
+{$lang.show_affiliate_orders}
+{else}
+<form action="user_dividend.php?act=add" method="post">
+  <label style="padding:0 20px;">当前未分配利润为{$no_dis_profit}元，请填写小于{$no_dis_profit}元的数值，并选择执行时间</label>
+  分红金额：<input style="width:14em;" name="fh_value" type="text" id="fh_value" size="15"> 元&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="submit" value="提交" class="button_new" /> 
+</form>
+{/if}
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+<!-- {/if} -->
+<table cellspacing='1' cellpadding='3'>
+<tr>
+  <th width="4%">编号</th>
+  <th>分红值</th>
+  <th>添加时间</th>  
+  <th>执行情况</th>
+  <th>执行时间</th>
+  <th>实际分红</th>
+  <th width="14%">操作</th>
+</tr>
+<!-- {foreach from=$logdb item=val} -->
+<tr>
+  <td align="center">{$val.id}</td>
+  <td align="center">{$val.fh_value}</td>
+  <td align="center">{$val.add_time}</td>
+  <td align="center">{$lang.is_do[$val.is_do]}</td>
+  <td align="center">{$val.do_time}</td>
+  <td align="center">{$val.do_result}</td>
+  <td><!-- {if $val.is_do eq '1'} -->执行完毕<!-- {elseif $val.is_do eq '2'} -->已设置凌晨执行 | <a href="user_dividend.php?act=del&id={$val.id}">删除</a><!-- {else} --><a href="user_dividend.php?act=liji&id={$val.id}">立即执行</a> | <a href="user_dividend.php?act=lingchen&id={$val.id}">凌晨执行</a> | <a href="user_dividend.php?act=del&id={$val.id}">删除</a><!-- {/if} --></td>
+  
+</tr>
+    <!-- {foreachelse} -->
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+<!-- {/foreach} -->
+</table>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+<!-- {if $full_page} -->
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+<!-- {literal} -->
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+<!-- {/literal} -->
+</script>
+{include file="pagefooter.htm"}
+<!-- {/if} -->

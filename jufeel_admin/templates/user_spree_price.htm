@@ -1,0 +1,51 @@
+<!-- {if $full_page} -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+{if $smarty.get.auid}
+{$lang.show_affiliate_orders}
+{else}
+<form action="user_spree_manage.php?act=add_price" method="post">
+	<label style="padding:0 20px;">添加新的定价--请依次填写年、月、价格，只填写数字即可</label>
+	<input style="width:4em;" name="year" type="text" id="year" size="5"> 年&nbsp;&nbsp;&nbsp;&nbsp;
+	<input style="width:4em;" name="month" type="text" id="month" size="5"> 月&nbsp;&nbsp;&nbsp;&nbsp;
+	<input style="width:4em;" name="price" type="text" id="price" size="5"> 元&nbsp;&nbsp;	
+	<input type="submit" value="添加定价" class="button_new" />
+</form>
+{/if}
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+<!-- {/if} -->
+
+<!-- {foreach from=$price_list item=val} -->
+<div class="price_box">
+	<ul>
+		<li>{$val.year}年{$val.month}月</li>
+		<li>指导价：{$val.price}元</li>
+		<li><a style="color:#CC0066;" href="user_spree_manage.php?act=price_del&id={$val.sp_id}">删除</a></li>
+	</ul>
+</div>
+<!-- {/foreach} -->
+<div style="clear:both"></div>
+<!-- {if $full_page} -->
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+<!-- {literal} -->
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+<!-- {/literal} -->
+</script>
+{include file="pagefooter.htm"}
+<!-- {/if} -->

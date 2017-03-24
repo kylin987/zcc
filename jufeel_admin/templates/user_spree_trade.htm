@@ -1,0 +1,93 @@
+<!-- {if $full_page} -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div" style="overflow:hidden;">
+{if $smarty.get.auid}
+{$lang.show_affiliate_orders}
+{else}
+<form action="user_spree_trade.php?act=list" style="float:left;">
+  {$lang.sch_stats.info}
+  <a href="user_spree_trade.php?act=list">全部</a>
+   <a href="user_spree_trade.php?act=list&status=0">未审核</a>
+  <a href="user_spree_trade.php?act=list&status=1">已完成</a> 
+  <a href="user_spree_trade.php?act=list&status=3">已驳回</a>
+会员ID
+
+<input type="hidden" name="act" value="list" />
+<input name="user_id" type="text" id="user_id" size="15"><input type="submit" value="{$lang.button_search}" class="button_new" />
+</form>
+{/if}
+<a class="change_sell" href="user_spree_sell.php?act=list">切换到礼包出售页</a>
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+<!-- {/if} -->
+<table cellspacing='1' cellpadding='3'>
+<tr>
+  <th width="4%">编号</th>
+  <th width="4%">用户ID</th>
+  <th width="8%">昵称</th>  
+  <th width="6%">真实姓名</th>
+  <th>礼包编号</th>
+  <th>年</th>
+  <th>月</th> 
+  <th width="10%">提交时间</th>
+  <th width="6%">审核状态</th>
+  <th width="10%">审核时间</th>
+  <th>交易类型</th>
+  <th>指导价</th>
+  <th>用户出价</th>
+  <th width="14%">操作</th>
+</tr>
+<!-- {foreach from=$logdb item=val} -->
+<tr>
+  <td align="center">{$val.tr_id}</td>
+  <td align="center">{$val.user_id}</td>
+  <td align="center">{$val.username}</td>
+  <td align="center">{$val.tname}</td>
+  <td align="center">{$val.spree_sn}</td>
+  <td align="center">{$val.year}年</td>
+  <td align="center">{$val.month}月</td>
+  <td align="center">{$val.send_time}</td>
+  <td align="center">{$lang.trade_spree_status[$val.status]}</td>
+  <td align="center">{$val.check_time}</td>
+  <td align="center">{$lang.trade_spree_type[$val.trade_type]}</td>
+  <td align="center">{$val.zd_price}</td>
+  <td align="center">{$val.trade_price}</td>
+  <td align="center">{if $val.status eq 1 or $val.status eq 3}
+    <a href="user_spree_trade.php?act=edit&id={$val.tr_id}" title="{$lang.surplus}">查看</a>
+    {else}
+    <a href="user_spree_trade.php?act=check&id={$val.tr_id}" title="{$lang.check}">通过</a> | <a href="user_spree_trade.php?act=edit&id={$val.tr_id}" title="{$lang.check}">驳回</a> 
+    {/if}</td>
+  
+</tr>
+    <!-- {foreachelse} -->
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+<!-- {/foreach} -->
+</table>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+<!-- {if $full_page} -->
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+<!-- {literal} -->
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+<!-- {/literal} -->
+</script>
+{include file="pagefooter.htm"}
+<!-- {/if} -->

@@ -1,0 +1,126 @@
+<!-- {if $full_page} -->
+{include file="pageheader.htm"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+{if $smarty.get.auid}
+{$lang.show_affiliate_orders}
+{else}
+<form action="user_zhuanzhang.php?act=list">
+  {$lang.sch_stats.info}
+  
+{$lang.sch_order}
+{$lang.start_date}&nbsp;
+    <input name="start_date" type="text" id="start_date" size="15" value='{$start_date}' readonly="readonly" /><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('start_date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button_new"/>&nbsp;&nbsp;
+    {$lang.end_date}&nbsp;
+    <input name="end_date" type="text" id="end_date" size="15" value='{$end_date}' readonly="readonly" /><input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('end_date', '%Y-%m-%d', false, false, 'selbtn2');" value="{$lang.btn_select}" class="button_new"/>&nbsp;&nbsp;
+	<input type="submit" name="submit" value="查询" class="button_new" />
+<input type="hidden" name="act" value="list" />
+<input name="user_id" type="text" id="user_id" size="15"><input type="submit" value="{$lang.button_search}" class="button_new" />
+</form>
+{/if}
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+<!-- {/if} -->
+<table cellspacing='1' cellpadding='3'>
+	<tr>
+      <th style="background:#999">转账时间</th>
+	  <th colspan="4" style="background:#999">转入人信息</th>
+	  <th colspan="3" style="background:#999">转账金额</th>
+      <th colspan="4" style="background:#999">转出人信息</th>
+    </tr>
+<tr>
+  <th width="10%">时间</th>
+  
+  <th width="4%">用户ID</th>
+  <th width="4%">真实姓名</th>
+  <th width="8%">电话</th>
+  <th width="8%">用户等级</th>
+
+  <th width="6%">自有余额</th>
+  <th width="6%">分红余额</th>
+  <th width="6%">总额</th>
+  
+  <th width="4%">用户ID</th>
+  <th width="4%">真实姓名</th>
+  <th width="8%">电话</th>
+  <th width="8%">用户等级</th>
+</tr>
+<!-- {foreach from=$logdb item=val} -->
+<tr>
+  <td align="center">{$val.change_time}</td>
+  
+  <td align="center">{$val.user_id}</td>
+  <td align="center">{$val.tname}</td>
+  <td align="center">{$val.mobile_phone}</td>
+  <td align="center">{$val.rankname}</td>
+
+  <td align="center">{$val.own_money}</td>
+  <td align="center">{$val.divi_money}</td>
+  <td align="center"><font color='red'>{$val.user_money}</font></td>
+  
+  <td align="center">{$val.other_userid}</td>
+  <td align="center">{$val.o_tname}</td>
+  <td align="center">{$val.o_mobile_phone}</td>
+  <td align="center">{$val.o_rankname}</td>
+
+</tr>
+    <!-- {foreachelse} -->
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+<!-- {/foreach} -->
+</table>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+<!-- {if $full_page} -->
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+<!-- {literal} -->
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+  getDownUrl();
+}
+function getList()
+{
+    var frm =  document.forms['TimeInterval'];
+    listTable.filter['start_date'] = frm.elements['start_date'].value;
+    listTable.filter['end_date'] = frm.elements['end_date'].value;
+    listTable.filter['page'] = 1;
+    listTable.loadList();
+    //getDownUrl();
+}
+function getDownUrl()
+{
+  var aTags = document.getElementsByTagName('A');
+  for (var i = 0; i < aTags.length; i++)
+  { 
+    if (aTags[i].href.indexOf('download') >= 0)
+    {
+      if (listTable.filter['start_date'] == "")
+      {
+        var frm =  document.forms['TimeInterval'];
+        listTable.filter['start_date'] = frm.elements['start_date'].value;
+        listTable.filter['end_date'] = frm.elements['end_date'].value;
+      }
+      aTags[i].href = "user_zhuanzhang.php?act=download&start_date=" + listTable.filter['start_date'] + "&end_date=" + listTable.filter['end_date'];
+    }
+  }
+}
+<!-- {/literal} -->
+</script>
+{include file="pagefooter.htm"}
+<!-- {/if} -->

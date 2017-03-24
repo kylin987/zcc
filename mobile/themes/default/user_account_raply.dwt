@@ -1,0 +1,104 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<ul class="nav nav-tabs" role="tablist">
+    <li><a href="{:url('User/account_detail')}" >{$lang.add_surplus_log}</a></li>	
+	 <!--<li><a href="{:url('User/account_detail3')}" >{$lang.add_sliv_log}</a></li>-->
+	 <!--<li><a href="{:url('User/account_detail2')}" >消费余额</a></li>-->
+	 <li><a href="{:url('User/account_deposit')}" >{$lang.surplus_type_0}</a></li>
+	 <li class="active"><a href="{:url('User/account_raply')}" >{$lang.surplus_type_1}</a></li>
+	 <li><a href="{:url('User/account_log')}" >{$lang.view_application}</a></li>
+	 <li><a href="{:url('User/stock_log')}" >市值奖励</a></li>
+  </ul>
+  <!-- {if $raply_info}--><div class="raply_info">{$raply_info}</div><!--{/if}-->
+<form action="{:url('user/act_account')}" method="post" name="theForm" >
+  <div class="ect-bg-colorf flow-consignee">
+    <ul class="o-info">
+	  <!-- {if $frozen_premium} -->
+	  <li class="ect-radio">
+        <input name="raply_type" type="radio" id="raply_type0" checked="checked" value="0" onclick="selectRaply(this)">
+        <label for="raply_type0">余额提现<i></i></label>
+        &nbsp;
+        <input name="raply_type" type="radio" id="raply_type1" value="1"  onclick="selectRaply(this)">
+        <label for="raply_type1">入股金提现(¥{$frozen_premium}元)<i></i></label>
+        &nbsp;
+		<input name="raply_type" type="radio" id="raply_type2" value="2"  onclick="selectRaply(this)">
+        <label for="raply_type2">入股金转余额(¥{$frozen_premium}元)<i></i></label>
+        &nbsp;
+      </li>
+	  <!-- {/if} -->	
+      <li>
+        <div class="input-text"><b class="pull-left">{$lang.repay_money}：</b><span>
+          <input name="amount" id="amount" placeholder="填写金额最小不得少于1000元" type="text" class="inputBg_touch" value="" />
+          </span></div>
+      </li>
+     
+      <li class="input-text"><b class="pull-left">{$lang.process_notic}：</b>
+        <textarea name="user_note" placeholder="{$lang.process_notic}" type="text">{$order.user_note|escape}</textarea>
+      </li>
+    </ul>
+	
+  </div>
+  <p style="line-height:2em;">特别说明：<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、需要代扣20%劳务税费/交易规费，咨询热线：0371-55698545。<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、冻结入股金需要转入余额请在“备注信息”中注明！</p>
+  <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+  <input type="hidden" name="surplus_type" value="1" />
+  <input type="hidden" id="frozen_premium" value="{$frozen_premium}" />
+  <input type="hidden" name="is_wanzheng" value="{$raply_info}" />
+    <input type="submit" name="submit"  class="btn btn-info ect-bg-colory"  value="{$lang.submit_request}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="reset" name="submit"  class="btn btn-info ect-bg-colory"  value="{$lang.button_reset}"/>
+	
+  </div>
+  
+</form>
+<p class="pull-right count">{$lang.current_surplus}<b class="ect-colory">{$surplus_amount}</b>（元）</p>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:7.2em;"></div>
+</div>
+
+
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<script type="text/javascript" src="__PUBLIC__/js/region.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/shopping_flow.js"></script> 
+<script type="text/javascript">
+	region.isAdmin = false;
+	{foreach from=$lang.flow_js item=item key=key}
+	var {$key} = "{$item}";
+	{/foreach}
+	{literal}
+	onload = function() {
+	      if (!document.all)
+	      {
+	        document.forms['theForm'].reset();
+	      }
+	}
+	{/literal}
+	
+	function selectRaply(obj){
+		var selectRaply = null;
+		if (selectedShipping == obj)
+		  {
+			return;
+		  }
+		  else
+		  {
+			selectedShipping = obj;
+		}
+		var theForm = obj.form;
+		for (i=0; i<theForm.elements.length; i++) {  
+			if (theForm[i].checked) {  
+				if(theForm[i].value == 0){
+					document.getElementById("amount").value="";
+					document.getElementById("amount").readOnly=false;
+				}else{
+					var frozen_premium = document.getElementById("frozen_premium").value;
+					document.getElementById("amount").value=frozen_premium;
+					document.getElementById("amount").readOnly=true;
+				}
+			}  
+		} 
+		
+	}
+</script>
+</body></html>

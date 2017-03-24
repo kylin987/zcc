@@ -1,0 +1,23 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<div class="mod1 mod2 blank" id="historybox" style="background-color:#FFFFFF;">
+<h1  style="background:url(../images/sdgg.gif) repeat-x; height:27px; line-height:27px; padding-left:10px;">
+<a href="catalog.php"><font  style="color:#000; font-size:14px;">{$lang.all_category}</font></a></h1>
+	<span class="lb"></span><span class="rb"></span>
+<div class="cagegoryCon clearfix">
+<!--{foreach from=get_categories_tree() item=cat name=name}-->
+ <dl style="border:none;">
+ <dt><a href="{$cat.url}">{$cat.name|escape:html}</a></dt>
+      <!--{foreach from=$cat.cat_id item=child}-->
+
+     <dd style="display:block;"><img src="../images/biao8.gif"/ style="margin-right:8px;"><a href="{$child.url}">{$child.name|escape:html}</a></dd>
+
+       <!--{foreach from=$child.cat_id item=childer}-->
+       <dd style=" margin-left:7px;">&nbsp;&nbsp;<a href="{$childer.url}">{$childer.name|escape:html}</a></dd>
+       <!--{/foreach}-->
+
+     <!--{/foreach}-->
+ </dl>
+ <!--{/foreach}-->
+</div>
+<div class="blank"></div>
+</div>

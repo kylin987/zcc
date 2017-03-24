@@ -1,0 +1,17 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<!-- 文章列表 start--> 
+<!--{if $article}--> 
+<dt><a href="{$article.url}&sale={$user_id}" >{$article.title}</a></dt>
+<dd>{$article.description}<a href="{$article.url}&sale={$user_id}">阅读全文>></a></dd>
+<!-- {/if}--> 
+<!-- 文章列表end--> 
+
+
+
+
+
+
+
+
+

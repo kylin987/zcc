@@ -1,0 +1,112 @@
+<!-- {if $full_page} -->
+{include file="pageheader.htm"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+{if $smarty.get.auid}
+{$lang.show_affiliate_orders}
+{else}
+<form action="user_stock.php?act=list">
+  {$lang.sch_stats.info}
+  <a href="user_stock.php?act=list">全部</a>
+  <a href="user_stock.php?act=list&status=0">正常</a>
+  <a href="user_stock.php?act=list&status=1">已完成</a>
+  <a href="user_stock.php?act=list&status=2">失败</a>
+  <a href="user_stock.php?act=list&up_bonus=0">未奖励</a>
+  <a href="user_stock.php?act=list&up_bonus=2">已存储</a>
+  <a href="user_stock.php?act=list&up_bonus=1">已奖励</a>
+  <a href="user_stock.php?act=list&ktimes=1">初次</a>
+  <a href="user_stock.php?act=list&ktimes=2">追加</a>
+  <a href="user_stock.php?act=list&no_done=1"><font color=red>尚未完成</font></a>
+{$lang.sch_order}
+{$lang.start_date}&nbsp;
+    <input name="start_date" type="text" id="start_date" size="15" value='{$start_date}' readonly="readonly" /><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('start_date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button_new"/>&nbsp;&nbsp;
+    {$lang.end_date}&nbsp;
+    <input name="end_date" type="text" id="end_date" size="15" value='{$end_date}' readonly="readonly" /><input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('end_date', '%Y-%m-%d', false, false, 'selbtn2');" value="{$lang.btn_select}" class="button_new"/>&nbsp;&nbsp;
+	<input type="submit" name="submit" value="查询" class="button_new" />
+<input type="hidden" name="act" value="list" />
+<input name="user_id" type="text" id="user_id" size="15"><input type="submit" value="{$lang.button_search}" class="button_new" />
+</form>
+{/if}
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+<!-- {/if} -->
+<table cellspacing='1' cellpadding='3'>
+<tr>
+  <th width="4%">股权编号</th>
+  <th width="4%">用户ID</th>
+  <th width="4%">用户名</th>
+  <th width="8%">微信昵称</th>
+  <th width="8%">用户等级</th>
+
+  <th width="6%">真实姓名</th>
+  <th width="10%"><a href="javascript:listTable.sort('now_assess_value'); ">当前完成任务额</a></th>
+  <th><a href="javascript:listTable.sort('stock'); ">股权数</a></th>
+  
+  <th><a href="javascript:listTable.sort('proportion'); ">占比数</a></th>
+  <th>支出</th>
+  <th width="10%">完成状态</th>
+  <th width="6%">奖励状态</th>
+  <th width="10%">入股时间</th>
+  <th width="6%">次数</th>
+</tr>
+<!-- {foreach from=$logdb item=val} -->
+<tr>
+  <td align="center">{$val.s_id}</td>
+  <td>{$val.user_id}</td>
+  <td>{$val.user_name}</td>
+  <td>{$val.nickname}</td>
+  <td>{$val.rankname}</td>
+
+  <td>{$val.tname}</td>
+  <td>{$val.now_assess_value}</td>
+  <td>{$val.stock}</td>  
+  <td>{$val.proportion}</td>
+  <td>{$val.exp}</td>
+  <td>{$lang.stock_status[$val.status]}</td>
+  <td>{$lang.up_bonus[$val.up_bonus]}</td>
+  <td>{$val.premium_time}</td>
+  <td>{$val.ktimes}</td>
+
+</tr>
+    <!-- {foreachelse} -->
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+<!-- {/foreach} -->
+</table>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+<!-- {if $full_page} -->
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+<!-- {literal} -->
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+function getList()
+{
+    var frm =  document.forms['TimeInterval'];
+    listTable.filter['start_date'] = frm.elements['start_date'].value;
+    listTable.filter['end_date'] = frm.elements['end_date'].value;
+    listTable.filter['page'] = 1;
+    listTable.loadList();
+    //getDownUrl();
+}
+<!-- {/literal} -->
+</script>
+{include file="pagefooter.htm"}
+<!-- {/if} -->

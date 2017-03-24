@@ -1,0 +1,94 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/k0415.png" /></p>
+  </div>
+<div class="ky_note">
+	<h2>合伙人协议</h2>
+	<p class="big">本协议是由<strong><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开封多千盈电子商务有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></strong>（以下简称甲方）依据中华人民共和国相关法律及法规与<strong><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;申请用户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></strong>（以下简称乙方）之间本着平等互利、诚实信任、共同发展的原则，经友好协商，就乙方成为甲方所创办的<strong><u>&nbsp;&nbsp;&nbsp;&nbsp;千盈资本花园&nbsp;&nbsp;&nbsp;&nbsp;</u></strong> 合伙人之一事宜，达成如下约定：</p>
+    <br/>
+	<p><b>1．甲方的权利和义务</b></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;1．1．甲方为乙方业务拓展提供相应的工具和指导及相应售出产品的售后支持；</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;1．2．甲方应及时修复平台的BUG以方便乙方开展业务；</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;1．3．甲方应为平台提供升级服务；</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;1．4．甲方有权利在乙方未达成资本花园任务指标的情况下强制对其作出降级处理。  </p>
+    <br/>
+<p><b>2．乙方的权利和义务</b></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;2．1．申请成为甲方合伙人，并缴纳股金；</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;2．2．合伙人义务宣传平台产品和拓展平台用户群体，但不得以夸大产品效果和欺诈性质诱导客户；</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;2．3．合伙人有义务及权利提出合理性平台升级建议；</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;2．4．合伙人权利可向甲方申请查看各项经营报表； </p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;2．5．合伙人有义务完成平台所有赋予的任务指标。 </p>
+<br/>
+<p><b>3．合伙人退出</b></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;3．1．自愿退出：合伙人自愿提出的退伙申请，平台将以合伙人起始入股金加银行结算定期利率15个工作日内退换合伙人；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;3．2．强制退出：合伙人出现以下情况，平台将以合伙人起始入股金加银行结算定期利率15个工作日内退换合伙人；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3．2．1．未完成平台给予合伙人任务指标；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3．2．2．因故意或重大过失给平台造成损失；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3．2．3．被依法宣告为无民事行为能力。</p>
+<br/>
+<p><b>4．分红</b></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;根据平台运营情况，平台承诺一年内至少分红一次，每年分红金额不低于年度纯利润10%。</p>
+<br/>
+<p><b>5．保密  </b></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;5．1．甲、乙双方对彼此之间相互提供的信息、资料以及本协议的具体内容负有保密义务；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;5．2．甲方保留产品名称变更的权利；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;5．3．乙方明确知悉甲方为第三方开发公司，与腾讯公司无关。</p>
+<br/>
+<p><b>6．免责条件</b></p>  
+<p>&nbsp;&nbsp;&nbsp;&nbsp;6．1．因国家政策法规调整、自然灾害等不可抗力或意外事件而影响乙方正常的服务和技术支持时，双方互不承担责任；</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;6．2．因腾讯公司调整产品导致服务不可继续执行，属不可抗力，双方互不承担责任。 </p>
+<br/>
+<p><b>7．附则</b></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;7．1．此协议一经在线确定同意即具有法律效力，双方必须严格遵守，任何一方不得无故终止。如一方违约，对方均有权追究其法律责任，要求赔偿损失。  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;7．2．合同的延续性：自本协议签订之日，一年为一周期，于当期协议到期前并甲乙双方没有提出异议，本协议自动存续下一周期。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;7．3．乙方地址，联系方式，如有变动，乙方应立即告知甲方，否则造成的损失甲方不承担任何责任。  </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;7．4．以上条款如有未尽事宜，在要约期间双方应平等协商解决。</p>
+<br/> 
+<p>本协议在甲方资本花园、乙方个人中心一图片形式保存。经用户在线确认同意后生效！</p>	 <br/>
+	<form action="{:url('user/apply_form')}" method="post">
+	<div class="k_agree">
+		<input type="checkbox" id="agree" class="myClass" /><span>我已阅读理解，同意上述协议条款！</span><div class="clear"></div>
+	</div>
+	<div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+		<input type="submit" value="下一步" class="btn btn-info ect-bg-colory" id="next" name="submit" disabled="disabled">
+	</div>
+	</form>
+</div>
+
+<div style="padding-bottom:0.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="__TPL__/js/Checkable.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$('input.myClass').Checkable({
+			color: 'blue'			 
+		});
+		var regBtn = $("#next");
+		$("#agree").change(function(){
+			var that = $(this);
+			//alert(that.attr('checked'));
+			//that.prop("checked",that.prop("checked"));
+			if(that.attr('checked')){
+				regBtn.prop("disabled",false)
+			}else{
+				regBtn.prop("disabled",true)
+			}
+		});
+	});	
+	/*
+	$('#agree').change(function() {
+        $('#next').removeAttr("disabled");
+    });
+	*/
+</script>
+
+</body>
+</html>

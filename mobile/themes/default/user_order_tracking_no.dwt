@@ -1,0 +1,16 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<section class="user-order-tracking ect-padding-tb ect-padding-lr" style="border-top:none;">
+	<ul id="queryResult">
+		<p>订单暂未发货，请稍后再来查询</p>
+    </ul>
+</section>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->    
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+</body>
+</html>

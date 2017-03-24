@@ -1,0 +1,19 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<div class="con" style="background:#fff;">
+  
+  <div class="article-info">
+    <h3>{$article.title}</h3>
+    <div class="article-info-con"> {$article.content} </div>
+  </div>
+  
+  <!--<div class="article_foot">
+  	{if $userinfo.share_img}<img src="{$userinfo.share_img}" style="margin-bottom:1em;" />{/if}
+	<p style="text-align:center;">{insert name='ads' id=2 num=1}</p>
+  </div>-->
+</div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body></html>

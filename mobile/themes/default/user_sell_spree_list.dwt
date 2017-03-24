@@ -1,0 +1,32 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<ul class="nav nav-tabs" role="tablist">    
+	 <li><a href="{:url('User/buy_spree_list')}" >购买礼包记录</a></li>
+	 <li class="active"><a href="{:url('User/sell_spree_list')}" >已售礼包记录</a></li>
+  </ul>
+ <div class="user-account-detail">
+  	<ul class=" ect-bg-colorf">
+     <!--{foreach from=$sell_spree_list item=item}-->
+    	<li>
+        	<p class="title"><span class="pull-left">{$item.send_time}</span> <span class="pull-right">{$item.trade_price}</span></p>
+            <p class="content"><span class="remark pull-left">{$lang.process_notic}:{$item.trade_beizhu}</span> <span class="pull-right text-right type">礼包{$item.spree_sn}出售</span>			
+			</p>
+			<p class="content"><span class="remark pull-left" style="right:5em;">{$lang.admin_notic}:{if $item.admin_note}{$item.admin_note}{else}N/A{/if}</span> <span class="pull-right text-right type">{$lang.is_paid}:{$item.s_note}</p>
+			<!-- {if $item.status eq 0} --><p class="content">{$lang.handle}：
+			<a href="{:url('user/cancel_buy_spree',array('id'=>$this->_var['item']['tr_id']))}" onclick="if (!confirm('{$lang.confirm_remove_account}')) return false;" class="btn btn-default">{$lang.is_cancel}</a>
+              <!-- {/if} -->
+			  </p>
+        </li>
+<!--{/foreach}-->
+    </ul>
+    <p class="pull-right count" style="background-color: bisque;">{$lang.current_surplus}<b class="ect-colory">{$surplus_amount}</b></p>
+  </div>
+    {include file='library/page.lbi '}
+	<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:7.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

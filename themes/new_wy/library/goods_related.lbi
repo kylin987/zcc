@@ -1,0 +1,25 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- {if $related_goods} -->
+<div class="mod1 mod2 blank">
+<h1 class="mod2tit" style="background:url(../images/sdgg.gif) repeat-x; height:27px;"><font  style="color:#5A8800">相关商品</font></h1>
+ <div class="history_list mod2con">
+<!--{foreach from=$related_goods item=releated_goods_data}-->
+	<ul class="clearfix">
+    	<li class="goodsimg">
+        	<a href="{$releated_goods_data.url}" target="_blank"><img src="{$releated_goods_data.goods_thumb}" alt="{$releated_goods_data.goods_name}" class="B_blue" /></a>
+        </li>
+        <li>
+        	<a href="{$releated_goods_data.url}" target="_blank" title="{$releated_goods_data.goods_name}">{$releated_goods_data.short_name}</a><br />
+            <!-- {if $releated_goods_data.promote_price neq 0} -->
+   {$lang.promote_price}<font class="f1">{$releated_goods_data.formated_promote_price}</font>
+	 <!-- {else} -->
+	  {$lang.shop_price}<font class="f1">{$releated_goods_data.shop_price}</font>
+	 <!-- {/if} -->
+     
+   <br />
+        </li>
+     </ul>
+<!--{/foreach}-->
+ </div>
+</div>
+<!-- {/if} -->

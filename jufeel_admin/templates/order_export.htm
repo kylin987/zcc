@@ -1,0 +1,58 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<!-- 订单搜索 -->
+<script type="text/javascript" src="../js/calendar.php"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<div class="form-div">
+  <form action="order.php" method="get" name="searchForm" target="_top">
+  <table cellspacing="1" cellpadding="3" width="100%" border=0>
+    <tr>
+      <td width="20%"><div align="right"><strong>请选择订单状态：</strong></div> </td>
+	  <td><select name="order_status" size=1>	
+	<option value="-1" selected>不限</option>
+	{foreach from=$status_list key=skey item=status}
+	<option value="{$skey}">{$status}</option>
+	{/foreach}
+	</select>
+	</td>
+	</tr>
+	 <tr>
+     <td><div align="right"><strong>请选择下单时间：</strong></div></td>
+	 <td>
+	 <input type="text" name="start_time" maxlength="60" size="20" readonly="readonly" id="start_time_id" />
+      <input name="start_time_btn" type="button" id="start_time_btn" onclick="return showCalendar('start_time_id', '%Y-%m-%d %H:%M', '24', false, 'start_time_btn');" value="{$lang.btn_select}" class="button_new"/>
+      ~      
+      <input type="text" name="end_time" maxlength="60" size="20" readonly="readonly" id="end_time_id" />
+      <input name="end_time_btn" type="button" id="end_time_btn" onclick="return showCalendar('end_time_id', '%Y-%m-%d %H:%M', '24', false, 'end_time_btn');" value="{$lang.btn_select}" class="button_new"/>  
+	</td>
+	</tr>
+	<tr>
+    <td><div align="right"><strong>请选择订单号：</strong></div></td>
+	<td>从<input name="order_id_start" type="text" id="order_id_start" size="15">
+    到：
+    <input name="order_id_end" type="text" id="order_id_end" size="15">
+    
+	</td>
+	</tr>
+	<tr>
+	<td>&nbsp; </td>
+	<td>
+	<input type="hidden" name="act" value="export_act">
+	<input type="submit" value="开始导出" class="button_new" />
+	</td></tr>
+	<tr><td colspan=2><br><br></td></tr>
+	<tr><td valign=top><div align="right"><strong>使用说明：</strong></div></td>
+	<td style="padding-bottom:20px;">1）时间段和订单号都是可选项，可以不用输入<br></td></tr>
+	<tr><td valign="top"></td>
+	<td style="padding-bottom:20px;"><script language="javascript" src="http://api.zocms.com/ecshop/order_export.php?charset=utf&ver=2.0v"></script> <!-- 插件更新 --><!--订单导出插件官方有更新：<a href="#" style="color: red;">点击更新</a>--></td></tr>
+	</table>
+  </form>
+
+
+
+</div>
+
+
+
+
+{include file="pagefooter.htm"}

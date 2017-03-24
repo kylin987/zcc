@@ -1,0 +1,93 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script language="javascript"> 
+<!--
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+</script>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+
+<div class="page-header clearfix">
+<div style=" width:1190px; height:auto; margin:0 auto; position:relative">
+  <div class="block1"> 
+    <!--顶部导航 开始-->
+    <div class="top_menu">
+      
+      <div class="top_nav fr"> {insert_scripts files='transport.js,utils.js'} <font id="ECS_MEMBERZONE" style="margin-right:5px;"> {* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font> 
+        <!--{if $navigator_list.top}--> 
+        <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} --> 
+        <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+        <!-- {if !$smarty.foreach.nav_top_list.last} --> 
+        | 
+        <!-- {/if} --> 
+        <!-- {/foreach} --> 
+        <!-- {/if} --> 
+      </div>
+    </div>
+    <div class="clear"></div>
+    <!--顶部导航 结束--> 
+    <!--logo搜索框及购物车 开始-->
+    <div class="logo fl"><a href="index.php" title=""><img src="images/logo.gif" alt="" /></a></div>
+    <div class="Search fl" style=" margin-top:3px;*margin-top:5px"> 
+        <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+        <form id="searchForm" name="searchForm" method="get" action="search.php" onSubmit="return checkSearchForm()">
+          <input class="fl" name="keywords" type="text" id="keyword" value="请输入要搜索的关键词" onclick="javascript:this.value='';"/>
+          <input class="fr btsearch" name="btsearch" type="submit" id="btsearch" value="" />
+        </form>
+      </div>
+    <div class="topArea fr">
+     
+      <div class="head_r fr">
+        <a href="flow.php"><div class="qq_jiesuan" onmouseover="this.className='qq_jiesuan jiesuan_over'" onmouseout="this.className='qq_jiesuan'">
+        <p style=" width:110px; height:20px;font-size:14px; color:#FFFFFF; text-align:center; position:absolute; top:10px;left:28px;">去购物车结算</p>
+        </div></a>
+       
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  </div>
+</div>
+<div class="globa-nav" style="position:relative; margin-bottom:10px;">
+  <div class="shadow"> </div>
+  <div class="block1 clearfix">
+    
+    <div class="allMenu fl"> <a href="../index.php" title="" {if $navigator_list.config.index eq 1} class="current"{/if} style="font-size:15px;">{$lang.home}</a> 
+      <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } --> 
+      <!--{if $smarty.foreach.nav_middle_list.iteration < 8}--> 
+      <a href="{$nav.url}" style="font-size:15px;" {if $nav.active eq 1} class="current"{/if} {if $nav.opennew eq 1}target="_blank" {/if} title="{$nav.name}" >{$nav.name}</a> 
+      <!--{/if}--> 
+      <!-- {/foreach} --> 
+    </div>
+    <div class="menu_right">
+      
+    </div>
+  </div>
+</div>

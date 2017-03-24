@@ -1,0 +1,49 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-13.png" /></p>   
+</div>
+<form action="{:url('user/sell_spree')}" method="post" enctype="multipart/form-data" name="formMsg" onSubmit="return submitSell()">
+  <section class="ect-bg-colorf user-service flow-consignee">
+    <ul>
+      <li class="input-text" style="text-align:center;">
+	  	<strong>出售礼包<br></strong>({$lb_info_price.spree_sn})
+      </li>
+      <li>
+        <div class="input-text"><b>售&nbsp;&nbsp;价：</b><span>
+          <input name="sell_price" id="sell_price" type="text" placeholder="" value="{$lb_info_price.spree_price}">
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b>留&nbsp;&nbsp;言：</b>
+          <textarea name="sell_beizhu" placeholder="该礼包指导价为：¥{$lb_info_price.spree_price}" cols="50" rows="4" wrap="virtual"></textarea>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <input type="hidden" name="spree_id" value="{$lb_info_price.spree_id}" />
+  <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+    <input type="submit" value="{$lang.submit}" class="btn btn-info ect-bg-colory" />
+  </div>
+</form>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+</footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript">
+	function submitSell(){
+		var sell_price = document.getElementById("sell_price").value;
+		var re = /^\d+(\.\d+)?$/;
+		if(sell_price.length == 0 || !re.test(sell_price)){
+			alert("参数错误，请重新输入");
+			return false;
+		}
+	}
+</script>
+
+</body>
+</html>

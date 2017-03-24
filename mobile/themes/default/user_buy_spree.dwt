@@ -1,0 +1,105 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-13.png" /></p>   
+</div>
+
+<form action="{:url('user/buy_spree')}" method="post" enctype="multipart/form-data" name="formMsg" onSubmit="return submitSell()">
+  <section class="ect-bg-colorf user-service flow-consignee">
+    <ul>
+      <li class="input-text" style="text-align:center;">
+	  	<strong>购买礼包<br></strong>
+      </li>
+      <li class="ect-radio">
+	  	<b>选择礼包年份：</b>
+        <input name="year" type="radio" id="year2016" checked="checked" value="2016" onChange="change_year()">
+        <label for="year2016">2016<i></i></label>&nbsp;&nbsp;
+		<input name="year" type="radio" id="year2017" value="2017" onChange="change_year()">
+        <label for="year2017">2017<i></i></label>      
+      </li>
+	  <li class="ect-select">
+	  	<b>选择礼包月份：</b>
+        <select name="month" id="month" onChange="get_zd_price()">
+          <option value="1">1月</option>
+          <option value="2">2月</option>
+          <option value="3">3月</option>
+		  <option value="4">4月</option>
+          <option value="5">5月</option>
+          <option value="6">6月</option>
+		  <option value="7">7月</option>
+          <option value="8">8月</option>
+          <option value="9" selected="selected">9月</option>
+		  <option value="10">10月</option>
+          <option value="11">11月</option>
+          <option value="12">12月</option>
+        </select>
+		<span id="zd_price" style="margin-left:1em;"></span>
+      </li>
+	  <li>
+        <div class="input-text"><b>收购价：</b><span>
+          <input name="buy_price" id="buy_price" type="text" placeholder="" value="">
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b>留&nbsp;&nbsp;言：</b>
+          <textarea name="buy_beizhu" placeholder="" cols="50" rows="4" wrap="virtual"></textarea>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+    <input type="submit" value="{$lang.submit}" class="btn btn-info ect-bg-colory" />
+  </div>
+</form>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+</footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript">
+	window.onload = function()
+	{		
+		get_zd_price();
+	}
+	function change_year(){		
+		get_zd_price();
+	}
+	function get_zd_price(){
+		var temp = document.getElementsByName("year");
+		  for(var i=0;i<temp.length;i++)
+		  {
+			 if(temp[i].checked)
+				   var year = temp[i].value;
+		  }
+		 var month = document.getElementById("month").value; 
+		 $.ajax({
+			url:'{:url('user/get_zd_price')}',
+			type:'post',
+			data:{year:year,month:month},
+			dataType:'json',
+			success:function(data){
+				if(data.status){				
+					$('#zd_price').html("该月礼包指导价为"+data.info+"元");
+					$('#buy_price').val(data.info);								
+				}else{
+					$('#zd_price').html(data.info);
+				}																				
+			}
+			 
+		});
+	}
+	function submitSell(){
+		var buy_price = document.getElementById("buy_price").value;
+		var re = /^\d+(\.\d+)?$/;
+		if(buy_price.length == 0 || !re.test(buy_price)){
+			alert("参数错误，请重新输入");
+			return false;
+		}
+	}
+</script>
+
+</body>
+</html>

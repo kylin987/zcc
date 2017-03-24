@@ -1,0 +1,29 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+
+<div class="ky_top_word">
+	<!-- {if $is_special == 0} -->
+		<p>您为非代理用户，不享受代理红包加成奖励</p>
+		<p><a href="http://www.qiankangyuan.com/mobile/index.php?c=user&a=apply_sale">点击申请成为代理</a></p>
+	<!-- {else} -->
+		<p>您为{$rank_name}，享受{$rank_name}红包奖励</p>
+	<!-- {/if} -->
+</div>
+<div class="hb_zc">
+	<p style="text-align:center;"><img src="__TPL__/images/hb_zc.jpg" /></p>
+</div>
+<!-- {if $heyue_url} -->
+<div class="heyue">
+	<p style="text-align:center;"><img src="{$heyue_url}" /></p>
+</div>
+<!-- {/if} -->
+<div style="padding-bottom:4.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body>
+</html>

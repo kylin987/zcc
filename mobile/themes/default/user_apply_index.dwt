@@ -1,0 +1,33 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+
+<!-- {if $heyue_url} -->
+
+<div class="heyue">
+
+	<p style="text-align:center;"><img src="{$heyue_url}" /></p>
+
+</div>
+
+<!-- {/if} -->
+
+<div style="padding-bottom:4.2em;"></div>
+
+<footer>
+
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+
+  </footer>
+
+  <div style="padding-bottom:4.2em;"></div>
+
+</div>
+
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+</body>
+
+</html>

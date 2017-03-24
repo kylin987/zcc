@@ -1,0 +1,158 @@
+{if $full_page}
+<!-- $Id: users_list.htm 17053 2010-03-15 06:50:26Z sxc_shop $ -->
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="form-div">
+  <form action="javascript:searchUser()" name="searchForm">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    &nbsp;{$lang.label_rank_name} <select name="user_rank"><option value="0">{$lang.all_option}</option>{html_options options=$user_ranks }</select>
+    &nbsp;{$lang.label_pay_points_gt}&nbsp;<input type="text" name="pay_points_gt" size="8" style="width:50px;"/>&nbsp;{$lang.label_pay_points_lt}&nbsp;<input style="width:50px;" type="text" name="pay_points_lt" size="10" />
+    &nbsp;<select name="s_type">
+	  <option value="3">会员编号</option>
+      <option value="0">会员名称</option>
+      <option value="1">真实姓名</option>
+      <option value="2">手机号码</option>
+	  <option value="4">昵称</option>
+	  
+    </select> &nbsp;<input type="text" name="keyword" /> <input type="submit" value="{$lang.button_search}"   class="button_new"/>
+	
+  </form>
+</div>
+
+<div class="form-div">
+  <form action="users.php?act=we_list" name="searchForm2" method="post">
+    <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+    
+    &nbsp;微信昵称 &nbsp;<input type="text" name="keyword" /> <input type="submit" class="button_new" value="{$lang.button_search}" />
+	
+  </form>
+</div>
+
+<form method="POST" action="" name="listForm" onsubmit="return confirm_bath()">
+
+<!-- start users list -->
+<div class="list-div" id="listDiv">
+{/if}
+<!--用户列表部分-->
+<table cellpadding="10" cellspacing="1">
+  <tr>
+    <th align=left>
+      <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+      <a href="javascript:listTable.sort('user_id'); ">{$lang.record_id}</a>{$sort_user_id}
+    </th>
+    <th><a href="javascript:listTable.sort('user_name'); ">{$lang.username}</a>{$sort_user_name}</th>
+    <th><a href="javascript:listTable.sort('nickname'); ">昵称</a></th>
+    <!--<th><a href="javascript:listTable.sort('is_validated'); ">{$lang.is_validated}</a>{$sort_is_validate}</th>-->
+    <th><a href="javascript:listTable.sort('user_money'); ">{$lang.user_money}</a></th>
+    <!--<th><a href="javascript:listTable.sort('double_time'); ">下次翻倍时间</a></th>-->
+    <th><a href="javascript:listTable.sort('rank_points'); ">{$lang.rank_points}</a></th>
+    <!--<th><a href="javascript:listTable.sort('pay_points'); ">银币</a></th>-->
+	<!--<th><a href="javascript:listTable.sort('gold_coin'); ">消费余额</a></th>-->
+	<th><a href="javascript:listTable.sort('tname'); ">姓名</a></th>
+	<th><a href="javascript:listTable.sort('mobile_phone'); ">手机</a></th>
+    <th><a href="javascript:listTable.sort('reg_time'); ">{$lang.reg_date}</a>{$sort_reg_time}</th>
+	<th><a href="javascript:listTable.sort('user_rank'); ">等级</a></th>
+    <th>{$lang.handler}</th>
+  <tr>
+  {foreach from=$user_list item=user}
+  <tr style="border-bottom:1px dotted #ccc">
+    <td><input type="checkbox" name="checkboxes[]" value="{$user.user_id}" notice="{if $user.user_money ne 0}1{else}0{/if}"/>{$user.user_id}</td>
+    <td class="first-cell">{$user.user_name|escape}</td>
+    <!--<td><span onclick="listTable.edit(this, 'edit_email', {$user.user_id})">{$user.email}</span></td>-->
+	<td>{$user.nickname}</td>
+    <!--<td align="center">{if $user.is_validated} <img src="images/yes.gif"> {else} <img src="images/no.gif"> {/if}</td>-->
+    <td>{$user.user_money}</td>
+    <!--<td>{$user.next_time}</td>-->
+    <td>{$user.rank_points}</td>
+    <!--<td>{$user.pay_points}</td>
+	<td>{$user.gold_coin}</td>-->
+	<td>{$user.tname}</td>
+	<td>{$user.mobile_phone}</td>
+
+    <td align="center">{$user.reg_time}</td>
+	<td>{$user.rank_name}</td>
+    <td align="center">
+	
+      <a href="users.php?act=edit&id={$user.user_id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>
+      <a href="users.php?act=address_list&id={$user.user_id}" title="{$lang.address_list}"><img src="images/book_open.gif" border="0" height="16" width="16" /></a>
+      <a href="order.php?act=list&user_id={$user.user_id}" title="{$lang.view_order}"><img src="images/icon_view.gif" border="0" height="16" width="16" /></a>
+      <a href="account_log.php?act=list&user_id={$user.user_id}" title="{$lang.view_deposit}"><img src="images/icon_account.gif" border="0" height="16" width="16" /></a>
+      <a href="javascript:confirm_redirect('{if $user.user_money ne 0}{$lang.still_accounts}{/if}{$lang.remove_confirm}', 'users.php?act=remove&id={$user.user_id}')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16" /></a>
+    </td>
+  </tr>
+  {foreachelse}
+  <tr><td class="no-records" colspan="13">{$lang.no_records}</td></tr>
+  {/foreach}
+  <tr>
+      <td colspan="2">     
+	  <select name="act">
+		  <option value="send_hb" selected="selected">发红包</option>
+		  <option value="batch_remove">删除</option>
+	  </select>
+	  
+      <input type="submit" id="btnSubmit" value="执行" disabled="true" class="button_new" /></td>
+      <td align="right" nowrap="true" colspan="12">
+      {include file="page.htm"}
+      </td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+<!-- end users list -->
+</form>
+<script type="text/javascript" language="JavaScript">
+<!--
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+{literal}
+onload = function()
+{
+    document.forms['searchForm'].elements['keyword'].focus();
+    // 开始检查订单
+    startCheckOrder();
+}
+
+/**
+ * 搜索用户
+ */
+function searchUser()
+{
+	listTable.filter['s_type'] = Utils.trim(document.forms['searchForm'].elements['s_type'].value);
+    listTable.filter['keywords'] = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+    listTable.filter['rank'] = document.forms['searchForm'].elements['user_rank'].value;
+    listTable.filter['pay_points_gt'] = Utils.trim(document.forms['searchForm'].elements['pay_points_gt'].value);
+    listTable.filter['pay_points_lt'] = Utils.trim(document.forms['searchForm'].elements['pay_points_lt'].value);
+    listTable.filter['page'] = 1;
+    listTable.loadList();
+}
+
+function confirm_bath()
+{
+  userItems = document.getElementsByName('checkboxes[]');
+  act = Utils.trim(document.forms['listForm'].elements['act'].value);
+  cfm = '{$lang.list_send_hb_confirm}';
+  if(act == 'batch_remove'){
+  	cfm = '{$lang.list_remove_confirm}';
+	  for (i=0; userItems[i]; i++)
+	  {
+		if (userItems[i].checked && userItems[i].notice == 1)
+		{
+		  cfm = '{$lang.list_still_accounts}' + '{$lang.list_remove_confirm}';
+		  break;
+		}
+	  }
+  }
+  return confirm(cfm);
+}
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}
+{/if}

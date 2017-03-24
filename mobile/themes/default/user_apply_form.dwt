@@ -1,0 +1,131 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+
+<div class="ky_note_form">
+	<h2>入股金缴纳与资料完善</h2>
+	<form action="{:url('user/apply_done')}" class="" id="daili_form" method="post" enctype="multipart/form-data">
+	<section class="flow-consignee ect-bg-colorf">
+		<ul>
+		  
+		  <li>
+			<div class="input-text"><b class="pull-left">{$lang.tname}：<font color="#FF0000">*</font></b><span>
+			  <input name="tname" type="text" placeholder="{$lang.no_tname}" id="tname"  value="">
+			  </span></div>
+		  </li>
+		  <li>
+			<div class="input-text"><b class="pull-left">{$lang.photo_number}：<font color="#FF0000">*</font></b><span>
+			  <input name="phone" type="text" placeholder="{$lang.no_mobile}" id="phone"  value="">
+			  </span></div>
+		  </li>
+		  <li>
+			<div class="input-text"><b class="pull-left">身份证号：<font color="#FF0000">*</font></b><span>
+			  <input name="sfcode" type="text" placeholder="请输入身份证号码" id="sfcode"  value="">
+			  </span></div>
+		  </li>
+		  
+		</ul>
+	  </section>
+	  <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-pro-list">
+        <p><b>入股金：{$premium} <font color="#FF0000">*</font></b><span class="label ect-bg-colory"></span></p>          
+      	
+     </section>
+     <!--
+	 <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-pro-list">
+        <p><b>请上传个人资料<font color="#FF0000">*</font></b><span class="label ect-bg-colory"></span></p>
+        <ul class="daili2">
+           <li>
+            <dl>
+              <dt class="pull-left">                  
+                <span>身份证(正面)：</span>
+              </dt>
+              <dd class="pull-left sf_code"><input name="sf_code_1" type="file" id="sf_code_1"></dd>
+            </dl>
+          </li>
+		  <li>
+            <dl>
+              <dt class="pull-left">                  
+                 <span>身份证(背面)：</span>
+              </dt>
+              <dd class="pull-left sf_code"><input name="sf_code_2" type="file" id="sf_code_2"></dd>
+            </dl>
+          </li>		  	  
+        </ul>
+     </section>-->
+	 <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-pro-list">
+	 	  <li>
+			<div class="input-text"><b>备注：</b>
+			  <textarea name="user_note" placeholder="请填写备注内容" cols="50" rows="4" wrap="virtual"></textarea>
+			</div>
+            <div class="input-text"><br><B>特别说明:</B><br>			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入股金转账至公司请在“备注”注明汇款人及汇款账号。</div>
+		  </li>
+	 </section>
+	 <p id="tishi"></p>
+	 <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+	 	<input name="premium" type="hidden" value="{$premium_value}" />
+		<input type="submit" value="提交申请" class="btn btn-info ect-bg-colory" id="daili_submit" name="submit">
+	</div>
+  </form>
+</div>
+<p style="display:none;" id='daili'>{$daili}</p>
+
+
+
+<div style="padding-bottom:4.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="__TPL__/js/jquery-1.7.2.min.js" ></script> 
+<script type="text/javascript" src="__TPL__/js/Checkable.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$('input.myClass').Checkable({
+			color: 'blue'			 
+		});
+		
+		
+		$("#daili_form").submit(function(){
+			//获得表单值			
+			
+  			var tname=$("#tname").val();
+			var phone=$("#phone").val();
+			var sfcode=$("#sfcode").val();
+			//var lev = $('input[name="lev"]:checked').val();
+			//var filepath=$("input[name='sf_code_1']").val();
+			//var file2=$("#sf_code_2");
+			if(tname==""){
+			   //显示错误提示信息
+			   $("#tishi").html('真实姓名不能为空');
+			   return false;
+			}
+			if(phone=="" || phone.length != 11){
+			   //显示错误提示信息
+			   $("#tishi").html('手机号不正确');
+			   return false;
+			}
+			if(sfcode=="" || sfcode.length != 18){
+			   //显示错误提示信息
+			   $("#tishi").html('身份证号码不正确');
+			   return false;
+			}
+			/*
+			var filepath=$("input[name='sf_code_1']").val();
+			var filepath2=$("input[name='sf_code_2']").val();
+        	var extStart=filepath.lastIndexOf(".");
+			var extStart2=filepath2.lastIndexOf(".");
+        	var ext=filepath.substring(extStart,filepath.length).toUpperCase();
+			var ext2=filepath2.substring(extStart2,filepath2.length).toUpperCase();
+        	if(ext!=".BMP"&&ext!=".PNG"&&ext!=".GIF"&&ext!=".JPG"&&ext!=".JPEG"&&ext2!=".BMP"&&ext2!=".PNG"&&ext2!=".GIF"&&ext2!=".JPG"&&ext2!=".JPEG"){
+        	$("#tishi").html('身份证图片未上传或上传文件不是图片格式');
+         	return false;
+			}
+			*/
+		  	
+		});
+	});	
+	
+</script>
+</body>
+</html>

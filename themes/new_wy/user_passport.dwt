@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js,user.js,transport.js'}
+<script type="text/javascript" src="../js/lunbo/jquery-1.7.2.min.js"></script>
+<script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<script type="text/javascript">
+function setTab(name,cursel){
+	cursel_0=cursel;
+	for(var i=1; i<=links_len; i++){
+		var menu = document.getElementById(name+i);
+		var menudiv = document.getElementById("con_"+name+"_"+i);
+		if(i==cursel){
+			menu.className="off";
+			menudiv.style.display="block";
+		}
+		else{
+			menu.className="";
+			menudiv.style.display="none";
+		}
+	}
+}
+function Next(){                                                        
+	cursel_0++;
+	if (cursel_0>links_len)cursel_0=1
+	setTab(name_0,cursel_0);
+} 
+var name_0='one';
+var cursel_0=1;
+var ScrollTime=3000;//循环周期（毫秒）
+var links_len,iIntervalId;
+onload=function(){
+	var links = document.getElementById("tab1").getElementsByTagName('li')
+	links_len=links.length;
+	for(var i=0; i<links_len; i++){
+		links[i].onmouseover=function(){
+			clearInterval(iIntervalId);
+			
+		}
+	}
+	document.getElementById("con_"+name_0+"_"+links_len).parentNode.onmouseover=function(){
+		clearInterval(iIntervalId);
+		
+	}
+	setTab(name_0,cursel_0);
+	
+}
+function randomString(len) {
+　　len = len || 32;
+　　var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+　　var maxPos = $chars.length;
+　　var pwd = '';
+　　for (i = 0; i < len; i++) {
+　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+　　}
+　　return pwd;
+}
+function SetCookie(name,value)
+{
+	var fz = 10; //此 cookie 将被保存 10分钟
+	var exp = new Date();
+	exp.setTime(exp.getTime() + fz*60*1000);	
+	document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+</script>
+</head>
+<body><!-- #BeginLibraryItem "/library/page_header.lbi" -->
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script language="javascript"> 
+<!--
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+</script>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+
+<div class="page-header clearfix">
+  <div class="block1"> 
+    <!--顶部导航 开始-->
+    <div class="top_menu">
+      <div class="top_nav fl"> <span class="current1 fl"><a target="_blank" href="http://www.68ecshop.com">68ecshop官网&nbsp;</a></span>
+        <div class="t_tdcode" style="z-index:9999999;" onmouseover="this.className='t_tdcode tdcode_show'" onmouseout="this.className='t_tdcode'">
+          <div class="tdcode_outter">
+            <div class="tdcode_inner"> <i class="arrow_outter">◆</i><i class="arrow_inner">◆</i>
+              <div class="pic"></div>
+              <p class="txt">扫描二维码，关注有好礼！</p>
+            </div>
+          </div>
+        </div>
+        <a target="_blank" href="http://e.t.qq.com/ecshop_moban" class="t_qq" title="关注68ecshop官方腾讯微博"><span class="hide_clip">腾讯微博</span> </a> <a target="_blank" href="http://e.weibo.com/68ecshopcom" class="t_sina" title="关注68ecshop官方新浪微博"><span class="hide_clip">新浪微博</span></a> </div>
+      <div class="top_nav fr"> {insert_scripts files='transport.js,utils.js'} <font id="ECS_MEMBERZONE" style="margin-right:5px;"> {* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font> 
+        <!--{if $navigator_list.top}--> 
+        <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} --> 
+        <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+        <!-- {if !$smarty.foreach.nav_top_list.last} --> 
+        | 
+        <!-- {/if} --> 
+        <!-- {/foreach} --> 
+        <!-- {/if} --> 
+      </div>
+    </div>
+    <div class="clear"></div>
+    <!--顶部导航 结束--> 
+    <!--logo搜索框及购物车 开始-->
+    <div class="logo fl"><a href="library/index.php" title=""><img src="library/images/logo.gif" alt="" /></a></div>
+    <div class="Search fl"> 
+        <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+        <form id="searchForm" name="searchForm" method="get" action="library/search.php" onSubmit="return checkSearchForm()">
+          <input class="fl" name="keywords" type="text" id="keyword" value="请输入" onclick="javascript:this.value='';"/>
+          <input class="fr btsearch" name="btsearch" type="submit" id="btsearch" value="" />
+        </form>
+      </div>
+    <div class="topArea fr">
+     
+      <div class="head_r fr">
+        <a href="library/flow.php"><div class="qq_jiesuan" onmouseover="this.className='qq_jiesuan jiesuan_over'" onmouseout="this.className='qq_jiesuan'">
+        <p style=" width:110px; height:20px;font-size:14px; color:#FFFFFF; text-align:center; position:absolute; top:10px;left:28px;">去购物车结算</p>
+        </div></a>
+       
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="globa-nav" style="position:relative; _margin-top:-6px;">
+  <div class="shadow"> </div>
+  <div class="block1 clearfix">
+    
+    <div class="allMenu fl"> <a href="index.php" title="" {if $navigator_list.config.index eq 1} class="current"{/if} style="font-size:15px;">{$lang.home}</a> 
+      <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } --> 
+      <!--{if $smarty.foreach.nav_middle_list.iteration < 8}--> 
+      <a href="{$nav.url}" style="font-size:15px;" {if $nav.active eq 1} class="current"{/if} {if $nav.opennew eq 1}target="_blank" {/if} title="{$nav.name}" >{$nav.name}</a> 
+      <!--{/if}--> 
+      <!-- {/foreach} --> 
+    </div>
+    <div class="menu_right">
+      
+    </div>
+  </div>
+</div>
+<!-- #EndLibraryItem --><div class="blank"></div>
+<!--#登录界面 start--> 
+<!-- {if $action eq 'login'} --> 
+<!--用户登录界面-->
+<div class="container" style="width:1190px; margin:20px auto 0;">
+
+
+  <div class="reg2 clearfix"> 
+    <div class="denglu_bg"></div>
+    <!--用户登录--> 
+    <div class="regBox" id="tab1">
+      <div class="k_menu">
+		<ul>
+			<li id="one1" onclick="setTab('one',1)">微信登录</li>
+			<li id="one2" onclick="setTab('one',2)">账号登录</li>			
+		</ul>
+	  </div>
+	  <div class="menudiv"> 
+	  	<div id="con_one_1">			
+			<div class="ky_wx" id="login_container">		
+			</div>
+			<script>
+				var sta = "lg"+randomString(30);
+				var statey="statey";
+				SetCookie(statey,sta);							
+				var obj = new WxLogin({
+				  id:"login_container", 
+				  appid: "wxa9accac04d04372b", 
+				  scope: "snsapi_login", 
+				  redirect_uri: "http://www.jufeels.com/user.php",
+				  state: sta,
+				  style: "",
+				  href: "http://www.jufeels.com/css/ky_wx.css"
+				});
+			</script>			
+		</div>
+		<div id="con_one_2" style="display:none;">
+			<h1>欢迎登录</h1>
+			  <form action="flow.php?step=login" method="post" name="loginForm" id="loginForm" onsubmit="return checkLoginForm(this)" class="inner">
+				<input name="username" type="text" class="usr" id="username" value="邮箱/会员名" onFocus="this.value=''" />
+				<div style=" height:28px"></div>
+				<input name="password" class="usr" type="password" onFocus="this.value=''"; style=" background:#ffffff" />
+				<!-- 判断是否启用验证码{if $enabled_captcha} -->
+				<div class="coLogin_one">
+				  <div class="coLoginTxt_2">
+					<div class="coLogin_txt_2_all">
+					  <input type="text" size="17" name="captcha" class="coLogin_txt_2" value="请输入{$lang.comment_captcha}" onFocus="this.value=''" style=" color:#999999" />
+					</div>
+					<div class="coLoginTxt_2_img"> <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /></div>
+				  </div>
+				</div>
+				<!--{/if}-->
+				<div class="denglu">
+				  <div class="ctime">
+					<input type="checkbox" value="1" name="remember" id="remember"  class="login_ctime"/>
+					<label for="remember" class="free_l">十天内免费登录</label>
+				  </div>
+				  <a href="user.php?act=get_password" class="blue">忘记密码？</a> </div>
+				<input name="act" type="hidden" value="signin" />
+				<input type="hidden" name="back_act" value="{$back_act}" />
+				<input type="submit" class="gBtn" name="login" value="登录" onmouseover="this.style.backgroundColor='#00925f'" onmouseout="this.style.backgroundColor='#409f73'"/>
+			  </form>
+			  <!--
+			  <div class="other">
+				<div class="free_l">其他帐号登录：</div>
+				<a href="user.php?act=oath&type=qq" class="qq_dl"></a><a href="user.php?act=register" class="blue">免费注册</a> 
+			  </div>
+			  -->
+			</div>
+		</div>	
+    </div>
+    
+  </div>
+</div>
+<!--{/if}--> 
+<!--#登录界面 end--> 
+
+<!--*会员注册界面 start-->
+<div class="container" style=" width:1190px; margin:20px auto 0">
+
+  <div class="reg clearfix"> 
+    <!--{if $action eq 'register'}-->
+    <!-- {if $shop_reg_closed eq 1} -->
+
+    <div class="coLoginBody">
+      <div class="usBox_2 clearfix">
+        <div class="f1 f5" align="center">{$lang.shop_register_closed}</div>
+      </div>
+    </div>
+    <!-- {else} --> 
+    
+    {insert_scripts files='utils.js'}
+        
+    <div class="RegBox">
+      <div class="RegTitle"> <span class="wel_reg">欢迎注册</span>（ 如已有帐号，请 <a href="user.php?act=login" class="blue1"> 点此登录 </a>） </div>
+      <form action="user.php" method="post" name="formUser" onsubmit="return register();" class="fillBox">
+        <div class="username7">
+          <label class="einfo">{$lang.label_username}：</label>
+          <span style="display: inline-block; position: relative;">
+          <input name="username" type="text" size="17" id="username" onblur="is_registered(this.value);" class="usr" value="推荐手机号码" onFocus="this.value=''" />
+          </span> <span id="username_notice" style="color:#FF0000; "></span> </div>
+        <div class="email" style=" padding-left:25px">
+          <label class="t_email">{$lang.label_email}：</label>
+          <input name="email" type="text" size="17" id="email" onblur="checkEmail(this.value);" class="usr" value="输入邮箱，找回密码使用"  onFocus="this.value=''"/>
+          <span id="email_notice" style="color:#FF0000"></span> </div>
+        <div style=" clear:both"></div>
+        <!-- 判断是否启用验证码{if $enabled_captcha} -->
+        <div class="coLogin_one" style=" margin-left:80px">
+          <div class="coLoginTxt_2">
+            <div class="coLogin_txt_2_all">
+              <input type="text" size="8" name="captcha" class="coLogin_txt_2" value="请输入{$lang.comment_captcha}" onFocus="this.value=''" style=" color:#999999"/>
+            </div>
+            <div class="coLoginTxt_2_img"> <img src="captcha.php?{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?'+Math.random()" /> </div>
+          </div>
+        </div>
+        <!--{/if}-->
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="blank"></div>
+        <div class="login">
+          <label class="einfo">{$lang.label_password}：</label>
+          <input name="password" type="password" id="password1" onblur="check_password(this.value);" onkeyup="checkIntensity(this.value)" class="usr" onFocus="this.value=''"  style=" background-color:#ffffff" />
+          <span style="color:#FF0000" id="password_notice"></span> </div>
+        <div class="makesure">
+          <label class="einfo">{$lang.label_confirm_password}：</label>
+          <input name="confirm_password" type="password" id="conform_password" onblur="check_conform_password(this.value);"  class="usr" value="" />
+          <span style="color:#FF0000" id="conform_password_notice"></span> </div>
+        <div class="ctime protype">
+          <input name="agreement" type="checkbox" value="1" checked="checked"  class="checkbox_txt" style="float: left;height: 16px;margin-top: 2px;width: 16px;" />
+          <span class="free_l"> {$lang.agreement} </span> </div>
+        <div class="reg">
+          <input name="act" type="hidden" value="act_register" >
+          <input type="hidden" name="back_act" value="{$back_act}" />
+          <input name="Submit" type="submit" value="已阅，注册" class="gBtn" onmousemove="this.style.backgroundColor='#00925f'" onmouseout="this.style.backgroundColor='#409F73'">
+        </div>
+      </form>
+    </div>
+    <!--{/if}--> 
+    <!--{/if}--> 
+  </div>
+</div>
+<!--#会员注册界面 end--> 
+
+<!--*找回密码界面 --> 
+<!--{if $action eq 'get_password'} --> 
+{insert_scripts files='utils.js'} 
+<script type="text/javascript">
+    {foreach from=$lang.password_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    </script>
+<div class="block1">
+  <div class="usBox bg">
+    <div class="usBox_2 clearfix">
+      <form action="user.php" method="post" name="getPassword" onsubmit="return submitPwdInfo();">
+        <br />
+        <table width="70%" border="0" align="center">
+          <tr>
+            <td colspan="2" align="center"><strong>{$lang.username_and_email}</strong></td>
+          </tr>
+          <tr>
+            <td width="29%" align="right">{$lang.username}</td>
+            <td width="61%"><input name="user_name" type="text" size="30" class="inputBg" /></td>
+          </tr>
+          <tr>
+            <td align="right">{$lang.email}</td>
+            <td><input name="email" type="text" size="30" class="inputBg" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="hidden" name="act" value="send_pwd_email" />
+              <input type="submit" name="submit" value="{$lang.submit}" class="bnt_blue" style="border:none;" />
+              <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}" style="border:none;" class="bnt_blue_1" /></td>
+          </tr>
+        </table>
+        <br />
+      </form>
+    </div>
+  </div>
+</div>
+<!--{/if}--> 
+
+<!--*通过问题找回密码的确认找回账号界面 --> 
+<!--{if $action eq 'qpassword_name'} -->
+<div class="block1">
+  <div class="usBox bg">
+    <div class="usBox_2 clearfix">
+      <form action="user.php" method="post">
+        <br />
+        <table width="70%" border="0" align="center">
+          <tr>
+            <td colspan="2" align="center"><strong>{$lang.get_question_username}</strong></td>
+          </tr>
+          <tr>
+            <td width="29%" align="right">{$lang.username}</td>
+            <td width="61%"><input name="user_name" type="text" size="30" class="inputBg" /></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="hidden" name="act" value="get_passwd_question" />
+              <input type="submit" name="submit" value="{$lang.submit}" class="bnt_blue" style="border:none;" />
+              <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}" style="border:none;" class="bnt_blue_1" /></td>
+          </tr>
+        </table>
+        <br />
+      </form>
+    </div>
+  </div>
+</div>
+<!--{/if}--> 
+
+<!--*根据输入账号显示密码问题界面 --> 
+
+<!--{if $action eq 'get_passwd_question'} -->
+<div class="block1">
+  <div class="usBox bg">
+    <div class="usBox_2 clearfix">
+      <form action="user.php" method="post">
+        <br />
+        <table width="70%" border="0" align="center">
+          <tr>
+            <td colspan="2" align="center"><strong>{$lang.input_answer}</strong></td>
+          </tr>
+          <tr>
+            <td width="29%" align="right">{$lang.passwd_question}：</td>
+            <td width="61%">{$passwd_question}</td>
+          </tr>
+          <tr>
+            <td align="right">{$lang.passwd_answer}：</td>
+            <td><input name="passwd_answer" type="text" size="20" class="inputBg" /></td>
+          </tr>
+          <!-- 判断是否启用验证码{if $enabled_captcha} -->
+          <tr>
+            <td align="right">{$lang.comment_captcha}</td>
+            <td><input type="text" size="8" name="captcha" class="inputBg" />
+              <img src="captcha.php?is_login=1&{$rand}" alt="captcha" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" /></td>
+          </tr>
+          <!--{/if}-->
+          <tr>
+            <td></td>
+            <td><input type="hidden" name="act" value="check_answer" />
+              <input type="submit" name="submit" value="{$lang.submit}" class="bnt_blue" style="border:none;" />
+              <input name="button" type="button" onclick="history.back()" value="{$lang.back_page_up}" style="border:none;" class="bnt_blue_1" /></td>
+          </tr>
+        </table>
+        <br />
+      </form>
+    </div>
+  </div>
+</div>
+<!--{/if}--> 
+
+<!-- {if $action eq 'reset_password'} --> 
+<script type="text/javascript">
+    {foreach from=$lang.password_js item=item key=key}
+      var {$key} = "{$item}";
+    {/foreach}
+    </script>
+<div class="block1">
+  <div class="usBox">
+    <div class="usBox_2 clearfix">
+      <form action="user.php" method="post" name="getPassword2" onSubmit="return submitPwd()">
+        <br />
+        <table width="80%" border="0" align="center">
+          <tr>
+            <td>{$lang.new_password}</td>
+            <td><input name="new_password" type="password" size="25" class="inputBg" /></td>
+          </tr>
+          <tr>
+            <td>{$lang.confirm_password}:</td>
+            <td><input name="confirm_password" type="password" size="25"  class="inputBg"/></td>
+          </tr>
+          <tr>
+            <td colspan="2" align="center"><input type="hidden" name="act" value="act_edit_password" />
+              <input type="hidden" name="uid" value="{$uid}" />
+              <input type="hidden" name="code" value="{$code}" />
+              <input type="submit" name="submit" value="{$lang.confirm_submit}" /></td>
+          </tr>
+        </table>
+        <br />
+      </form>
+    </div>
+  </div>
+</div>
+<!--{/if}--> 
+<!--#找回密码界面 end--><!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+ {if $helps}
+<div class="contain">
+	<div class="footer_line"></div>
+	<div class="pageFooter">
+  		<div class="artBox">
+    <div class="artList"> 
+     
+      <!-- {foreach from=$helps item=help_cat name=helps } -->
+      <div class="list" style="padding-top:15px; padding-bottom:15px;" <!--{if $smarty.foreach.helps.first}-->style="padding-left:0px;"<!--{/if}-->>
+        <h4>{$help_cat.cat_name}</h4>
+        <ul> 
+          <!-- {foreach from=$help_cat.article item=item} -->
+          <li><a href="{$item.url}" target="_blank" title="{$item.title|escape:html}">{$item.short_title}</a> </li>
+          <!-- {/foreach} --> 
+        </ul>
+      </div>
+      <!-- {/foreach} --> 
+      <div class="footer_li fl"></div>
+      <div class="fl list1" >
+      <h4 style="border:none">68ecshop官方微信</h4>
+      <img width="80px" height="80px" src="library/images/foot_weixin.gif">
+      </div>
+      <div class="fl list1" >
+      <h4 style="border:none">68ecshop手机端</h4>
+      <img width="80px" height="80px" src="library/images/foot_weixin.gif">
+      </div>
+    </div>
+
+  </div>
+	</div>
+	<div class="footer_line"></div>
+    <div class="block1">
+    	<div class="footer_service"></div>
+    </div>
+</div>
+ {/if}
+<!--帮助-->
+<div class="tc" style="margin-bottom:0px;"> 
+  <!-- {if $navigator_list.bottom} --> 
+   <div class="footer_help" style="margin-bottom:5px;">
+  <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} --> 
+  <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+  <!-- {if !$smarty.foreach.nav_bottom_list.last} --> 
+  | 
+  <!-- {/if} --> 
+  <!-- {/foreach} --><br />
+  </div>
+  <!-- {/if} --> 
+    <!--友情链接 start-->
+    <!--{if $img_links  or $txt_links }-->
+    <div id="bottomNav" >
+     <div class="box_1">
+      <div class="links1 ">
+        <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+     
+       <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
+       
+        <!--结束图片类型的友情链接{/foreach}-->
+        <div class="clear"></div>
+        <a href="http://www.68ecshop.com" target="_blank">68ecshop</a>
+        <a href="http://www.68ecshop.com/category-33-b0.html" target="_blank">68ecshop模板中心</a>
+        <a href="http://bbs.68ecshop.com" target="_blank">68ecshop论坛</a>
+        <!-- {if $txt_links} -->
+        <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+        <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+        <!--结束文字类型的友情链接{/foreach}-->
+        <!-- {/if} -->
+        
+            
+      </div>
+     </div>
+    </div>
+    <!--{/if}-->
+    <!--友情链接 end-->
+  {$copyright}
+  {$shop_address} {$shop_postcode} 
+  <!-- 客服电话{if $service_phone} --> 
+  Tel: {$service_phone} 
+  <!-- 结束客服电话{/if} --> 
+  <!-- 邮件{if $service_email} --> 
+  E-mail: {$service_email}<br />
+  <!-- 结束邮件{/if} --> 
+  <!-- QQ 号码 {foreach from=$qq item=im} --> 
+  <!-- {if $im} --> 
+  <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a> 
+  <!-- {/if} --> <!-- {/foreach} 结束QQ号码 --><a href="http://www.68ecshop.com" style="display:none;">68ECSHOP模版中心</a><!-- 淘宝旺旺 {foreach from=$ww item=im} --> <!-- {if $im} --> <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" />{$im}</a> 
+  <!-- {/if} --> 
+  <!--{/foreach} 结束淘宝旺旺 --> 
+  <!-- Yahoo Messenger {foreach from=$ym item=im} --> 
+  <!-- {if $im} --> 
+  <a href="http://edit.yahoo.com/config/send_webmesg?.target={$im}n&.src=pg" target="_blank"><img src="images/yahoo.gif" width="18" height="17" border="0" alt="Yahoo Messenger" /> {$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} 结束Yahoo Messenger --> 
+  <!-- MSN Messenger {foreach from=$msn item=im} --> 
+  <!-- {if $im} --> 
+  <img src="images/msn.gif" width="18" height="17" border="0" alt="MSN" /> <a href="msnim:chat?contact={$im}">{$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} 结束MSN Messenger --> 
+  <!-- Skype {foreach from=$skype item=im} --> 
+  <!-- {if $im} --> 
+  <img src="http://mystatus.skype.com/smallclassic/{$im|escape:url}" alt="Skype" /><a href="skype:{$im|escape:url}?call">{$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} --><br />
+  <!-- ICP 证书{if $icp_number} --> 
+  {$lang.icp_number}:<a href="http://www.miibeian.gov.cn/" target="_blank">{$icp_number}</a><br />
+  <!-- 结束ICP 证书{/if} --> 
+  <div id="footer_ban">
+  <a href="http://www.68ecshop.com" target="_blank">  <img src="library/images/footer.jpg" alt="68ecshop版权所有" /></a>
+  <a href="http://www.68ecshop.com" target="_blank"><p>68ecshop模板</p></a>
+
+  </div>
+</div>
+  {insert_scripts files='common.min.js'}
+<SCRIPT type=text/javascript>
+_LOAD_SCRIPT_('themes/68ecshop_wangyibaojian/js/chat.float.min.js?020');
+</SCRIPT><!-- #EndLibraryItem --></body>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+{foreach from=$lang.passport_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var username_exist = "{$lang.username_exist}";
+</script>
+</html>

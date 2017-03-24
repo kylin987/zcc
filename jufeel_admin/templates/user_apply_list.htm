@@ -1,0 +1,115 @@
+<!-- {if $full_page} -->
+{include file="pageheader.htm"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+{if $smarty.get.auid}
+{$lang.show_affiliate_orders}
+{else}
+<form action="user_apply_manage.php?act=list">
+  {$lang.sch_stats.info}
+  <a href="user_apply_manage.php?act=list">全部</a>
+  <a href="user_apply_manage.php?act=list&pay_status=1">已付款</a>
+  <a href="user_apply_manage.php?act=list&is_apply=0">未审核</a>
+  <a href="user_apply_manage.php?act=list&is_apply=1">已审核</a>
+  <a href="user_apply_manage.php?act=list&is_apply=2">已拒绝</a>
+  <a href="user_apply_manage.php?act=list&ktimes=1">初次</a>
+  <a href="user_apply_manage.php?act=list&ktimes=2">追加</a>
+{$lang.sch_order}
+{$lang.start_date}&nbsp;
+    <input name="start_date" type="text" id="start_date" size="15" value='{$start_date}' readonly="readonly" /><input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('start_date', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button_new"/>&nbsp;&nbsp;
+    {$lang.end_date}&nbsp;
+    <input name="end_date" type="text" id="end_date" size="15" value='{$end_date}' readonly="readonly" /><input name="selbtn2" type="button" id="selbtn2" onclick="return showCalendar('end_date', '%Y-%m-%d', false, false, 'selbtn2');" value="{$lang.btn_select}" class="button_new"/>&nbsp;&nbsp;
+	<input type="submit" name="submit" value="查询" class="button_new" />
+<input type="hidden" name="act" value="list" />
+<input name="user_id" type="text" id="user_id" size="15"><input type="submit" value="{$lang.button_search}" class="button_new" />
+</form>
+{/if}
+</div>
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+<!-- {/if} -->
+<table cellspacing='1' cellpadding='3'>
+<tr>
+  <th width="4%">编号</th>
+  <th width="4%">用户ID</th>
+  <th width="4%">用户名</th>
+  <th width="8%">微信昵称</th>
+  <th width="8%">用户等级</th>
+  <th>付款状态</th>
+
+  <th width="6%">真实姓名</th>
+  <th width="10%">手机号</th>
+  <th>身份证号</th>
+  <!--<th width="5%">身份证正面</th>
+  <th width="5%">身份证背面</th>-->
+  
+  <th>付款金额</th>
+  <th width="10%">付款时间</th>
+  <th width="10%">提交时间</th>
+  <th width="6%">次数</th>
+  <th width="6%">审核状态</th>
+  <th width="14%">操作</th>
+</tr>
+<!-- {foreach from=$logdb item=val} -->
+<tr>
+  <td align="center">{$val.id}</td>
+  <td>{$val.user_id}</td>
+  <td>{$val.user_name}</td>
+  <td>{$val.nickname}</td>
+  <td>{$val.rankname}</td>
+  <td>{$lang.dl_stats[$val.pay_status]}</td>
+
+  <td>{$val.tname}</td>
+  <td>{$val.phone}</td>
+  <td>{$val.sf_code}</td>
+  <!--<td><a href="/mobile/{$val.sf_code_1}" target="_blank">查看</a></td>
+  <td><a href="/mobile/{$val.sf_code_2}" target="_blank">查看</a></td>-->
+  
+  <td>{$val.total_fee2}元</td>
+  <td>{$val.time_end}</td>
+  <td>{$val.time}</td>
+  <td>{$val.ktimes}</td>
+  <td>{$lang.dl_sh[$val.is_apply]}</td>
+  <td><!-- {if $val.heyue_url} --><a href="user_apply_manage.php?act=edit&id={$val.id}">编辑</a> | <a target="_blank" href="/mobile/{$val.heyue_url}">查看</a><!-- {else} --><!-- {if $val.is_apply eq 1} --><a href="user_apply_manage.php?act=edit&id={$val.id}">编辑</a> | <a href="user_apply_manage.php?act=make&id={$val.id}">生成</a><!-- {else} --><a href="user_apply_manage.php?act=edit&id={$val.id}">编辑</a> | <a href="user_apply_manage.php?act=shenhe&id={$val.id}">审核</a><!-- {/if} --><!-- {/if} --> | <a href="user_apply_manage.php?act=bohui&id={$val.id}">驳回</a> | <a href="user_apply_manage.php?act=del&id={$val.id}">删除</a></td>
+</tr>
+    <!-- {foreachelse} -->
+    <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
+<!-- {/foreach} -->
+</table>
+  <table cellpadding="4" cellspacing="0">
+    <tr>
+      <td align="right">{include file="page.htm"}</td>
+    </tr>
+  </table>
+<!-- {if $full_page} -->
+</div>
+</form>
+<script type="Text/Javascript" language="JavaScript">
+listTable.recordCount = {$record_count};
+listTable.pageCount = {$page_count};
+
+{foreach from=$filter item=item key=key}
+listTable.filter.{$key} = '{$item}';
+{/foreach}
+
+<!-- {literal} -->
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+function getList()
+{
+    var frm =  document.forms['TimeInterval'];
+    listTable.filter['start_date'] = frm.elements['start_date'].value;
+    listTable.filter['end_date'] = frm.elements['end_date'].value;
+    listTable.filter['page'] = 1;
+    listTable.loadList();
+    //getDownUrl();
+}
+<!-- {/literal} -->
+</script>
+{include file="pagefooter.htm"}
+<!-- {/if} -->

@@ -1,0 +1,85 @@
+<!-- $Id: account_list.htm 14928 2008-10-06 09:25:48Z testyang $ -->
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<div class="form-div">
+<form method="post" action="stock_log.php?act=list&s_id={$smarty.get.s_id}" name="searchForm">
+  <select name="account_type" onchange="document.forms['searchForm'].submit()">
+    <option value="" {if $account_type eq ''}selected="selected"{/if}>所有</option>
+    <option value="0" {if $account_type eq '0'}selected="selected"{/if}>首次增加</option>
+    <option value="1" {if $account_type eq '1'}selected="selected"{/if}>结算前更新</option>
+	<option value="2" {if $account_type eq '2'}selected="selected"{/if}>结算更新</option>
+    <option value="3" {if $account_type eq '3'}selected="selected"{/if}>新合伙人进入更新</option>
+    <option value="4" {if $account_type eq '4'}selected="selected"{/if}>考核失败</option>
+	<option value="5" {if $account_type eq '5'}selected="selected"{/if}>分红前更新</option>
+    <option value="6" {if $account_type eq '6'}selected="selected"{/if}>分红后更新</option>
+    <option value="7" {if $account_type eq '7'}selected="selected"{/if}>股权奖励前更新</option>
+	<option value="8" {if $account_type eq '8'}selected="selected"{/if}>股权奖励支出</option>
+	<option value="9" {if $account_type eq '9'}selected="selected"{/if}>股权奖励</option>
+  </select>
+  
+  </form>
+</div>
+
+<form method="post" action="" name="listForm">
+<div class="list-div" id="listDiv">
+{/if}
+
+  <table cellpadding="10" cellspacing="1">
+    <tr>
+      <th width="20%">变动时间</th>
+      <th width="30%">描述</th>
+      <th>股数变化</th>
+    </tr>
+    {foreach from=$account_list item=account}
+    <tr>
+      <td>{$account.change_time}</td>
+      <td>{$account.change_desc|escape:html}</td>
+      <td align="right">
+        {if $account.stock gt 0}
+          <span style="color:#0000FF">+{$account.stock}</span>
+        {elseif $account.stock lt 0}
+          <span style="color:#FF0000">{$account.stock}</span>
+        {else}
+          {$account.stock}
+        {/if}
+      </td>
+      
+    </tr>
+    {foreachelse}
+    <tr><td class="no-records" colspan="6">{$lang.no_records}</td></tr>
+    {/foreach}
+  </table>
+<table id="page-table" cellspacing="0">
+  <tr>
+    <td align="right" nowrap="true">
+    {include file="page.htm"}
+    </td>
+  </tr>
+</table>
+
+{if $full_page}
+</div>
+</form>
+
+<script type="text/javascript" language="javascript">
+  <!--
+  listTable.recordCount = {$record_count};
+  listTable.pageCount = {$page_count};
+
+  {foreach from=$filter item=item key=key}
+  listTable.filter.{$key} = '{$item}';
+  {/foreach}
+
+  {literal}
+  onload = function()
+  {
+      // 开始检查订单
+      startCheckOrder();
+  }
+  {/literal}
+  //-->
+</script>
+{include file="pagefooter.htm"}
+{/if}

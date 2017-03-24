@@ -1,0 +1,49 @@
+<p>{literal} <style type="text/css">
+body,td { font-size:13px; }
+.wuliu_gz ul {padding:10px; overflow:hidden;list-style:none;}
+.wuliu_gz ul li {font-size:12px; font-family:"Arial";}
+.wuliu_gz ul li i {font-style:normal; line-height:26px; height:26px; display:inline-block; padding:5px 0;}
+.wuliu_gz ul li i.k_time {padding-right:10px;}
+.wuliu_gz ul li i.k_res {padding-left:32px; background:url(images/liu-info-icon.png) 0 -190px no-repeat;}
+</style> {/literal}</p>
+<table width="100%" border="1" style="border-collapse:collapse;border-color:#000;">
+    <tbody>
+        <tr align="center">
+            <td bgcolor="#cccccc">{$lang.print_order_sn}</td>
+            <td bgcolor="#cccccc">{$lang.goods_name}         <!-- 商品名称 --></td>
+            <td bgcolor="#cccccc">{$lang.goods_number}         <!-- 商品数量 --></td>
+            <td bgcolor="#cccccc">{$lang.label_consignee}</td>
+            <td bgcolor="#cccccc">&nbsp;省&nbsp;市&nbsp;区</td>
+            <td bgcolor="#cccccc">&nbsp;详细地址</td>
+            <td bgcolor="#cccccc">{if $order.tel}{$lang.label_tel}{/if} {if $order.mobile}{$lang.label_mobile}{/if}</td>
+            <td bgcolor="#cccccc">{$lang.action_user}</td>
+            <td bgcolor="#cccccc">{$lang.label_order_time}</td>
+            <td bgcolor="#cccccc">{$lang.label_invoice_no}</td>
+            <td bgcolor="#cccccc">订货人ID</td>
+            <td bgcolor="#cccccc">订货人姓名</td>
+            <td bgcolor="#cccccc">发货人</td>
+            <td bgcolor="#cccccc">发货人电话</td>
+            <td bgcolor="#cccccc">付款状态</td>
+        </tr>
+        <!-- {foreach from=$goods_list item=goods key=key} -->
+        <tr>
+            <td>{$order.order_sn}         <!-- 订单号 --></td>
+            <td>&nbsp;{$goods.goods_name}         <!-- 商品名称 -->         {if $goods.is_gift}{if $goods.goods_price gt 0}{$lang.remark_favourable}{else}{$lang.remark_gift}{/if}{/if}         {if $goods.parent_id gt 0}{$lang.remark_fittings}{/if}</td>
+            <td align="right">{$goods.goods_number}&nbsp;         <!-- 商品数量 --></td>
+            <td align="right">{$order.consignee}</td>
+            <td align="right">{$order.region}</td>
+            <td align="right">{$order.address}</td>
+            <td align="right">{$order.tel}&nbsp;&nbsp;{$order.mobile}</td>
+            <td align="right">{$action_user}</td>
+            <td align="right">{$order.order_time}</td>
+            <td align="right">{$order.invoice_no}</td>
+            <td align="right">{$order.user_id}</td>
+            <td align="right">{$order.tname}</td>
+            <td align="right">{$shop_name}</td>
+            <td align="right">{$service_phone}</td>
+            <td align="right">{if $order.discount gt 0}- {$lang.label_discount} {$order.formated_discount} {/if}{if $order.pack_name and $order.pack_fee neq '0.00'} + {$lang.label_pack_fee}{$order.formated_pack_fee} {/if} {if $order.card_name and $order.card_fee neq '0.00'} + {$lang.label_card_fee} {$order.formated_card_fee} {/if} {if $order.pay_fee neq '0.00'} + {$lang.label_pay_fee} {$order.formated_pay_fee} {/if} {if $order.shipping_fee neq '0.00'} + {$lang.label_shipping_fee}{$order.formated_shipping_fee} {/if} {if $order.insure_fee neq '0.00'} + {$lang.label_insure_fee} {$order.formated_insure_fee} {/if} = {$lang.label_order_amount}{$order.formated_total_fee}{if $order.money_paid neq '0.00'}- {$lang.label_money_paid} {$order.formated_money_paid}{/if} {if $order.own_money neq '0.00'}- 自有余额 {$order.formated_own_money}{/if} {if $order.divi_money neq '0.00'}- 分红余额 {$order.formated_divi_money}{/if} {if $order.integral_money neq '0.00'}- {$lang.label_integral} {$order.formated_integral_money}{/if} {if $order.goldcoin neq '0.00'}- 使用消费余额： ￥{$order.goldcoin}元{/if} {if $order.bonus neq '0.00'}- {$lang.label_bonus} {$order.formated_bonus}{/if} = {$lang.label_money_dues}{$order.formated_order_amount}</td>
+        </tr>
+        <!-- {/foreach} -->
+    </tbody>
+</table>
+<p>&nbsp;</p>

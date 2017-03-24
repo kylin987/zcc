@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable --><!-- TemplateBeginEditable name="head" --><!-- TemplateEndEditable -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+</head>
+<body><!-- #BeginLibraryItem "/library/page_header.lbi" -->
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script language="javascript"> 
+<!--
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+</script>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+
+<div class="page-header clearfix">
+  <div class="block1"> 
+    <!--顶部导航 开始-->
+    <div class="top_menu">
+      <div class="top_nav fl"> <span class="current1 fl"><a target="_blank" href="http://www.68ecshop.com">68ecshop官网&nbsp;</a></span>
+        <div class="t_tdcode" style="z-index:9999999;" onmouseover="this.className='t_tdcode tdcode_show'" onmouseout="this.className='t_tdcode'">
+          <div class="tdcode_outter">
+            <div class="tdcode_inner"> <i class="arrow_outter">◆</i><i class="arrow_inner">◆</i>
+              <div class="pic"></div>
+              <p class="txt">扫描二维码，关注有好礼！</p>
+            </div>
+          </div>
+        </div>
+        <a target="_blank" href="http://e.t.qq.com/ecshop_moban" class="t_qq" title="关注68ecshop官方腾讯微博"><span class="hide_clip">腾讯微博</span> </a> <a target="_blank" href="http://e.weibo.com/68ecshopcom" class="t_sina" title="关注68ecshop官方新浪微博"><span class="hide_clip">新浪微博</span></a> </div>
+      <div class="top_nav fr"> {insert_scripts files='transport.js,utils.js'} <font id="ECS_MEMBERZONE" style="margin-right:5px;"> {* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font> 
+        <!--{if $navigator_list.top}--> 
+        <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} --> 
+        <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+        <!-- {if !$smarty.foreach.nav_top_list.last} --> 
+        | 
+        <!-- {/if} --> 
+        <!-- {/foreach} --> 
+        <!-- {/if} --> 
+      </div>
+    </div>
+    <div class="clear"></div>
+    <!--顶部导航 结束--> 
+    <!--logo搜索框及购物车 开始-->
+    <div class="logo fl"><a href="library/index.php" title=""><img src="library/images/logo.gif" alt="" /></a></div>
+    <div class="Search fl"> 
+        <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+        <form id="searchForm" name="searchForm" method="get" action="library/search.php" onSubmit="return checkSearchForm()">
+          <input class="fl" name="keywords" type="text" id="keyword" value="请输入" onclick="javascript:this.value='';"/>
+          <input class="fr btsearch" name="btsearch" type="submit" id="btsearch" value="" />
+        </form>
+      </div>
+    <div class="topArea fr">
+     
+      <div class="head_r fr">
+        <a href="library/flow.php"><div class="qq_jiesuan" onmouseover="this.className='qq_jiesuan jiesuan_over'" onmouseout="this.className='qq_jiesuan'">
+        <p style=" width:110px; height:20px;font-size:14px; color:#FFFFFF; text-align:center; position:absolute; top:10px;left:28px;">去购物车结算</p>
+        </div></a>
+       
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="globa-nav" style="position:relative; _margin-top:-6px;">
+  <div class="shadow"> </div>
+  <div class="block1 clearfix">
+    
+    <div class="allMenu fl"> <a href="index.php" title="" {if $navigator_list.config.index eq 1} class="current"{/if} style="font-size:15px;">{$lang.home}</a> 
+      <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } --> 
+      <!--{if $smarty.foreach.nav_middle_list.iteration < 8}--> 
+      <a href="{$nav.url}" style="font-size:15px;" {if $nav.active eq 1} class="current"{/if} {if $nav.opennew eq 1}target="_blank" {/if} title="{$nav.name}" >{$nav.name}</a> 
+      <!--{/if}--> 
+      <!-- {/foreach} --> 
+    </div>
+    <div class="menu_right">
+      
+    </div>
+  </div>
+</div>
+<!-- #EndLibraryItem --><!--主体内容 start-->
+<div class="block1"><!-- #BeginLibraryItem "/library/ur_here.lbi" -->
+<div class="ur_here blank">
+
+{$lang.ur_here} {$ur_here}
+</div><!-- #EndLibraryItem --><div class="mod1 blank">
+	<span class="lt"></span><span class="lb"></span><span class="rt"></span><span class="rb"></span>
+	<h1 class="mod1tit">{$lang.all_category}</h1>
+	<div class="mod1con clearfix">
+	<!--{foreach from=$cat_list item=cat}-->
+            <div style="white-space:nowrap; padding-left:{$cat.level*2}em;
+              {if $cat.has_children eq 0}float:left;padding-left: 1em;{else}clear:both;font-weight:bold;padding-top: 10px;{/if}
+              "><a href="{$cat.url}">{$cat.cat_name}({$cat.goods_num})</a></div>
+   <!--{/foreach}-->
+	</div>
+</div>
+</div>
+<!--主体内容 end--><!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+ {if $helps}
+<div class="contain">
+	<div class="footer_line"></div>
+	<div class="pageFooter">
+  		<div class="artBox">
+    <div class="artList"> 
+     
+      <!-- {foreach from=$helps item=help_cat name=helps } -->
+      <div class="list" style="padding-top:15px; padding-bottom:15px;" <!--{if $smarty.foreach.helps.first}-->style="padding-left:0px;"<!--{/if}-->>
+        <h4>{$help_cat.cat_name}</h4>
+        <ul> 
+          <!-- {foreach from=$help_cat.article item=item} -->
+          <li><a href="{$item.url}" target="_blank" title="{$item.title|escape:html}">{$item.short_title}</a> </li>
+          <!-- {/foreach} --> 
+        </ul>
+      </div>
+      <!-- {/foreach} --> 
+      <div class="footer_li fl"></div>
+      <div class="fl list1" >
+      <h4 style="border:none">68ecshop官方微信</h4>
+      <img width="80px" height="80px" src="library/images/foot_weixin.gif">
+      </div>
+      <div class="fl list1" >
+      <h4 style="border:none">68ecshop手机端</h4>
+      <img width="80px" height="80px" src="library/images/foot_weixin.gif">
+      </div>
+    </div>
+
+  </div>
+	</div>
+	<div class="footer_line"></div>
+    <div class="block1">
+    	<div class="footer_service"></div>
+    </div>
+</div>
+ {/if}
+<!--帮助-->
+<div class="tc" style="margin-bottom:0px;"> 
+  <!-- {if $navigator_list.bottom} --> 
+   <div class="footer_help" style="margin-bottom:5px;">
+  <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} --> 
+  <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+  <!-- {if !$smarty.foreach.nav_bottom_list.last} --> 
+  | 
+  <!-- {/if} --> 
+  <!-- {/foreach} --><br />
+  </div>
+  <!-- {/if} --> 
+    <!--友情链接 start-->
+    <!--{if $img_links  or $txt_links }-->
+    <div id="bottomNav" >
+     <div class="box_1">
+      <div class="links1 ">
+        <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+     
+       <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
+       
+        <!--结束图片类型的友情链接{/foreach}-->
+        <div class="clear"></div>
+        <a href="http://www.68ecshop.com" target="_blank">68ecshop</a>
+        <a href="http://www.68ecshop.com/category-33-b0.html" target="_blank">68ecshop模板中心</a>
+        <a href="http://bbs.68ecshop.com" target="_blank">68ecshop论坛</a>
+        <!-- {if $txt_links} -->
+        <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+        <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+        <!--结束文字类型的友情链接{/foreach}-->
+        <!-- {/if} -->
+        
+            
+      </div>
+     </div>
+    </div>
+    <!--{/if}-->
+    <!--友情链接 end-->
+  {$copyright}
+  {$shop_address} {$shop_postcode} 
+  <!-- 客服电话{if $service_phone} --> 
+  Tel: {$service_phone} 
+  <!-- 结束客服电话{/if} --> 
+  <!-- 邮件{if $service_email} --> 
+  E-mail: {$service_email}<br />
+  <!-- 结束邮件{/if} --> 
+  <!-- QQ 号码 {foreach from=$qq item=im} --> 
+  <!-- {if $im} --> 
+  <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a> 
+  <!-- {/if} --> <!-- {/foreach} 结束QQ号码 --><a href="http://www.68ecshop.com" style="display:none;">68ECSHOP模版中心</a><!-- 淘宝旺旺 {foreach from=$ww item=im} --> <!-- {if $im} --> <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" />{$im}</a> 
+  <!-- {/if} --> 
+  <!--{/foreach} 结束淘宝旺旺 --> 
+  <!-- Yahoo Messenger {foreach from=$ym item=im} --> 
+  <!-- {if $im} --> 
+  <a href="http://edit.yahoo.com/config/send_webmesg?.target={$im}n&.src=pg" target="_blank"><img src="images/yahoo.gif" width="18" height="17" border="0" alt="Yahoo Messenger" /> {$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} 结束Yahoo Messenger --> 
+  <!-- MSN Messenger {foreach from=$msn item=im} --> 
+  <!-- {if $im} --> 
+  <img src="images/msn.gif" width="18" height="17" border="0" alt="MSN" /> <a href="msnim:chat?contact={$im}">{$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} 结束MSN Messenger --> 
+  <!-- Skype {foreach from=$skype item=im} --> 
+  <!-- {if $im} --> 
+  <img src="http://mystatus.skype.com/smallclassic/{$im|escape:url}" alt="Skype" /><a href="skype:{$im|escape:url}?call">{$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} --><br />
+  <!-- ICP 证书{if $icp_number} --> 
+  {$lang.icp_number}:<a href="http://www.miibeian.gov.cn/" target="_blank">{$icp_number}</a><br />
+  <!-- 结束ICP 证书{/if} --> 
+  <div id="footer_ban">
+  <a href="http://www.68ecshop.com" target="_blank">  <img src="library/images/footer.jpg" alt="68ecshop版权所有" /></a>
+  <a href="http://www.68ecshop.com" target="_blank"><p>68ecshop模板</p></a>
+
+  </div>
+</div>
+  {insert_scripts files='common.min.js'}
+<SCRIPT type=text/javascript>
+_LOAD_SCRIPT_('themes/68ecshop_wangyibaojian/js/chat.float.min.js?020');
+</SCRIPT><!-- #EndLibraryItem --></body>
+</html>

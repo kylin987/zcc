@@ -1,0 +1,47 @@
+<!-- $Id: user_account_check.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<form method="post" action="user_spree_sell.php" name="theForm" >
+<table border="0" width="100%">
+  <tr>
+    <td colspan="2"><strong>会员出售礼包信息：</strong><hr /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <strong>会员名称：</strong>{$log_info.username} &nbsp;&nbsp;<strong>出售礼包：</strong>{$log_info.year}年{$log_info.month}月礼包 {$log_info.spree_sn} &nbsp;&nbsp;<strong>出价：</strong>{$log_info.sell_price}
+    &nbsp;&nbsp;<strong>提交时间：</strong>{$log_info.send_time}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>会员备注：</strong>{$log_info.sell_beizhu}<hr /></td>
+  </tr> 
+  <tr>
+    <th width="15%" valign="middle" align="right">管理员备注：</th>
+    <td width="85%">
+      <textarea name="admin_note" cols="55" rows="5">{$log_info.admin_note}</textarea>
+    </td>
+  </tr>
+  <tr>
+    <th width="15%" valign="middle" align="right">状态：</th>
+    <td>
+      {$log_info.lang_status}
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="hidden" name="act" value="action" />
+      <input type="hidden" name="id" value="{$log_info.id}" />
+	  <input type="hidden" name="status" value="{$log_info.is_sell}" />
+      <input name="submit" type="submit" value="{$lang.button_submit}" class="button_new" />
+      <input type="reset" value="{$lang.button_reset}" class="button_new" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+
+{/literal}
+{include file="pagefooter.htm"}

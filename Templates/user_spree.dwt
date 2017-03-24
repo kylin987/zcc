@@ -1,0 +1,56 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-13.png" /></p>
+</div>
+<div class="ky_note">
+  <table width="100%" border="0" cellpadding="2" cellspacing="2">
+    <tr>
+      <td><div align="center"><strong>获得礼包日期</strong></div></td>
+      <td><div align="center"><strong>礼包状态</strong></div></td>
+      <td><div align="center"><strong>有效激活日期</strong></div></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+</div>
+
+<div style="padding-bottom:0.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+</footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="__TPL__/js/Checkable.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$('input.myClass').Checkable({
+			color: 'blue'			 
+		});
+		var regBtn = $("#next");
+		$("#agree").change(function(){
+			var that = $(this);
+			//alert(that.attr('checked'));
+			//that.prop("checked",that.prop("checked"));
+			if(that.attr('checked')){
+				regBtn.prop("disabled",false)
+			}else{
+				regBtn.prop("disabled",true)
+			}
+		});
+	});	
+	/*
+	$('#agree').change(function() {
+        $('#next').removeAttr("disabled");
+    });
+	*/
+</script>
+
+</body>
+</html>

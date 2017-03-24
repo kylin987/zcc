@@ -1,0 +1,44 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+
+<div class="ky_note">
+	
+</div>
+
+<div style="padding-bottom:4.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="__TPL__/js/Checkable.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$('input.myClass').Checkable({
+			color: 'blue'			 
+		});
+		var regBtn = $("#next");
+		$("#agree").change(function(){
+			var that = $(this);
+			//alert(that.attr('checked'));
+			//that.prop("checked",that.prop("checked"));
+			if(that.attr('checked')){
+				regBtn.prop("disabled",false)
+			}else{
+				regBtn.prop("disabled",true)
+			}
+		});
+	});	
+	/*
+	$('#agree').change(function() {
+        $('#next').removeAttr("disabled");
+    });
+	*/
+</script>
+<script>
+	
+</script>
+</body>
+</html>

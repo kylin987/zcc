@@ -1,0 +1,72 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+
+<div class="ky_note_form">
+	<h2>{$now_stock_times}次追加入股金</h2>
+	<form action="{:url('user/add_stock_done')}" class="" id="daili_form" method="post" enctype="multipart/form-data">
+	<section class="flow-consignee ect-bg-colorf">
+		<ul>
+		  
+		  <li>
+			<div class="input-text"><b class="pull-left">{$lang.tname}：<font color="#FF0000">*</font></b><span>
+			  <input name="tname" type="text" readonly value="{$apply_info.tname}" />
+			  </span></div>
+		  </li>
+		  <li>
+			<div class="input-text"><b class="pull-left">{$lang.photo_number}：<font color="#FF0000">*</font></b><span>
+			  <input name="phone" type="text" readonly value="{$apply_info.phone}" />
+			  </span></div>
+		  </li>
+		  <li>
+			<div class="input-text"><b class="pull-left">身份证号：<font color="#FF0000">*</font></b><span>
+			  <input name="sf_code" type="text" readonly value="{$apply_info.sf_code}" />
+			  </span></div>
+		  </li>
+		  
+		</ul>
+	  </section>
+	  <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-pro-list">
+        <p><b>入股金：{$premium} <font color="#FF0000">*</font></b><span class="label ect-bg-colory"></span></p>          
+      	
+     </section>
+	 <section class="ect-margin-tb ect-margin-bottom0 ect-padding-lr checkout-pro-list">
+	 	  <li>
+			<div class="input-text"><b>备注：</b>
+			  <textarea name="user_note" placeholder="请填写备注内容" cols="50" rows="4" wrap="virtual"></textarea>
+			</div>
+            <div class="input-text"><br><B>特别说明:</B><br>			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入股金转账至公司请在“备注”注明汇款人及汇款账号。</div>
+		  </li>
+	 </section>
+	 <p id="tishi"></p>
+	 <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+	 	<input name="premium" type="hidden" value="{$premium_value}" />
+		<input name="now_stock_times" type="hidden" value="{$now_stock_times}" />
+		<input type="submit" value="提交申请" class="btn btn-info ect-bg-colory" id="daili_submit" name="submit">
+	</div>
+  </form>
+</div>
+<p style="display:none;" id='daili'>{$daili}</p>
+
+
+
+<div style="padding-bottom:4.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="__TPL__/js/jquery-1.7.2.min.js" ></script> 
+<script type="text/javascript" src="__TPL__/js/Checkable.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$('input.myClass').Checkable({
+			color: 'blue'			 
+		});
+		
+		
+	});	
+	
+</script>
+</body>
+</html>

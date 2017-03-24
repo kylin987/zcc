@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>{$page_title}</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+{* 包含脚本文件 *}
+{insert_scripts files='common.js'}
+<script type="text/javascript" src="js/action.js"></script>
+</head>
+<body><!-- #BeginLibraryItem "/library/page_header.lbi" -->
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+</script>
+<script language="javascript"> 
+<!--
+function killerrors() { 
+return true; 
+} 
+window.onerror = killerrors; 
+//-->
+</script>
+<script type="text/javascript">
+var process_request = "{$lang.process_request}";
+var btn_buy = "{$lang.btn_buy}";
+var is_cancel = "{$lang.is_cancel}";
+var select_spe = "{$lang.select_spe}";
+</script>
+
+<div class="page-header clearfix">
+  <div class="block1"> 
+    <!--顶部导航 开始-->
+    <div class="top_menu">
+      <div class="top_nav fl"> <span class="current1 fl"><a target="_blank" href="http://www.68ecshop.com">68ecshop官网&nbsp;</a></span>
+        <div class="t_tdcode" style="z-index:9999999;" onmouseover="this.className='t_tdcode tdcode_show'" onmouseout="this.className='t_tdcode'">
+          <div class="tdcode_outter">
+            <div class="tdcode_inner"> <i class="arrow_outter">◆</i><i class="arrow_inner">◆</i>
+              <div class="pic"></div>
+              <p class="txt">扫描二维码，关注有好礼！</p>
+            </div>
+          </div>
+        </div>
+        <a target="_blank" href="http://e.t.qq.com/ecshop_moban" class="t_qq" title="关注68ecshop官方腾讯微博"><span class="hide_clip">腾讯微博</span> </a> <a target="_blank" href="http://e.weibo.com/68ecshopcom" class="t_sina" title="关注68ecshop官方新浪微博"><span class="hide_clip">新浪微博</span></a> </div>
+      <div class="top_nav fr"> {insert_scripts files='transport.js,utils.js'} <font id="ECS_MEMBERZONE" style="margin-right:5px;"> {* ECSHOP 提醒您：根据用户id来调用member_info.lbi显示不同的界面  *}{insert name='member_info'} </font> 
+        <!--{if $navigator_list.top}--> 
+        <!-- {foreach name=nav_top_list from=$navigator_list.top item=nav} --> 
+        <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+        <!-- {if !$smarty.foreach.nav_top_list.last} --> 
+        | 
+        <!-- {/if} --> 
+        <!-- {/foreach} --> 
+        <!-- {/if} --> 
+      </div>
+    </div>
+    <div class="clear"></div>
+    <!--顶部导航 结束--> 
+    <!--logo搜索框及购物车 开始-->
+    <div class="logo fl"><a href="library/index.php" title=""><img src="library/images/logo.gif" alt="" /></a></div>
+    <div class="Search fl"> 
+        <script type="text/javascript">
+    {literal}
+    <!--
+    function checkSearchForm()
+    {
+        if(document.getElementById('keyword').value)
+        {
+            return true;
+        }
+        else
+        {
+            alert("{$lang.no_keywords}");
+            return false;
+        }
+    }
+    -->
+    {/literal}
+    </script>
+        <form id="searchForm" name="searchForm" method="get" action="library/search.php" onSubmit="return checkSearchForm()">
+          <input class="fl" name="keywords" type="text" id="keyword" value="请输入" onclick="javascript:this.value='';"/>
+          <input class="fr btsearch" name="btsearch" type="submit" id="btsearch" value="" />
+        </form>
+      </div>
+    <div class="topArea fr">
+     
+      <div class="head_r fr">
+        <a href="library/flow.php"><div class="qq_jiesuan" onmouseover="this.className='qq_jiesuan jiesuan_over'" onmouseout="this.className='qq_jiesuan'">
+        <p style=" width:110px; height:20px;font-size:14px; color:#FFFFFF; text-align:center; position:absolute; top:10px;left:28px;">去购物车结算</p>
+        </div></a>
+       
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="globa-nav" style="position:relative; _margin-top:-6px;">
+  <div class="shadow"> </div>
+  <div class="block1 clearfix">
+    
+    <div class="allMenu fl"> <a href="index.php" title="" {if $navigator_list.config.index eq 1} class="current"{/if} style="font-size:15px;">{$lang.home}</a> 
+      <!-- {foreach name=nav_middle_list from=$navigator_list.middle item=nav } --> 
+      <!--{if $smarty.foreach.nav_middle_list.iteration < 8}--> 
+      <a href="{$nav.url}" style="font-size:15px;" {if $nav.active eq 1} class="current"{/if} {if $nav.opennew eq 1}target="_blank" {/if} title="{$nav.name}" >{$nav.name}</a> 
+      <!--{/if}--> 
+      <!-- {/foreach} --> 
+    </div>
+    <div class="menu_right">
+      
+    </div>
+  </div>
+</div>
+<!-- #EndLibraryItem --><div class="block1"><!-- #BeginLibraryItem "/library/ur_here.lbi" -->
+<div class="ur_here blank">
+
+{$lang.ur_here} {$ur_here}
+</div><!-- #EndLibraryItem --></div>
+<div class="block1 clearfix">
+  <div id="pageLeft" class="fl">
+	 <!-- TemplateBeginEditable name="左边区域" --><!-- #BeginLibraryItem "/library/category_tree.lbi" -->
+
+<div class="mod1 mod2 blank" id="historybox" style="background-color:#FFFFFF;">
+<h1  style="background:url(images/sdgg.gif) repeat-x; height:27px; line-height:27px; padding-left:10px;"><a href="library/catalog.php"><font  style="color:#000; font-size:14px;">{$lang.all_category}</font></a></h1>
+	<span class="lb"></span><span class="rb"></span>
+<div class="cagegoryCon clearfix">
+<!--{foreach from=get_categories_tree() item=cat name=name}-->
+ <!--{if $smarty.foreach.name.last}-->
+ <dl style="border:none;">
+<!--{else}-->
+<dl>
+<!--{/if}-->
+ <dt><a href="{$cat.url}">{$cat.name|escape:html}</a></dt>
+ </dl>
+ <!--{/foreach}-->
+</div>
+<div class="blank"></div>
+</div><!-- #EndLibraryItem --><!-- #BeginLibraryItem "/library/promotion_info.lbi" -->
+<!-- {if $promotion_info} -->
+<div class="mod1 mod2 blank" id="promotionInfo" style="background-color:#FFFFFF;">
+	<span class="lt"></span><span class="lb"></span><span class="rt"></span><span class="rb"></span>
+	<h1 class="mod2tit">{$lang.promotion_info}</h1>
+	<div class="mod2con">
+	<!-- {foreach from=$promotion_info item=item key=key} -->
+	<!-- {if $item.type eq "snatch"} -->
+   	<a href="library/snatch.php" title="{$lang.$item.type}" class="txtdot">{$lang.snatch_promotion}</a>
+    <!-- {elseif $item.type eq "group_buy"} -->
+    <a href="library/group_buy.php" title="{$lang.$item.type}" class="txtdot">{$lang.group_promotion}</a>
+    <!-- {elseif $item.type eq "auction"} -->
+    <a href="library/auction.php" title="{$lang.$item.type}" class="txtdot">{$lang.auction_promotion}</a>
+    <!-- {elseif $item.type eq "favourable"} -->
+    <a href="library/activity.php" title="{$lang.$item.type}" class="txtdot">{$lang.favourable_promotion}</a>
+		<!-- {elseif $item.type eq "package"} -->
+    <a href="library/package.php" title="{$lang.$item.type}" class="txtdot">{$lang.package_promotion}</a>
+    <!-- {/if} -->
+    <a href="{$item.url}" title="{$lang.$item.type} {$item.act_name}{$item.time}">{$item.act_name}</a><br />
+	<!-- {/foreach} -->
+	</div>
+</div>
+<script type="text/javascript">divheight("promotionInfo");</script>
+<!-- {/if} -->			<!-- #EndLibraryItem --><!-- #BeginLibraryItem "/library/history.lbi" -->
+
+<div id='history_div' style="background-color:#FFFFFF;">
+<div class="mod1 mod2 blank" id="historybox">
+<h1 class="mod2tit" style="background:url(images/sdgg.gif) repeat-x; height:27px;"><font  style="color:#5A8800">{$lang.view_history}</font></h1>
+
+	<span class="lb"></span><span class="rb"></span>
+	<div id='history_list' class="history_list mod2con">
+	 {insert name='history'}
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+divheight("historybox");
+if (document.getElementById('history_list').innerHTML.replace(/\s/g,'').length<1)
+{
+    document.getElementById('history_div').style.display='none';
+}
+else
+{
+    document.getElementById('history_div').style.display='block';
+}
+function clear_history()
+{
+Ajax.call('user.php', 'act=clear_history',clear_history_Response, 'GET', 'TEXT',1,1);
+}
+function clear_history_Response(res)
+{
+document.getElementById('history_list').innerHTML = '{$lang.no_history}';
+}
+</script>
+<!-- #EndLibraryItem --><!-- TemplateEndEditable -->
+	</div>
+	<div id="pageRight" class="fr">
+	
+		<div class="goodsTitle">
+		{$lang.auction_goods}
+		</div>
+		<div class="grouplist clearfix">
+		 <!-- {if $auction_list} 如果有拍卖活动 -->
+		    <!-- {foreach from=$auction_list item=auction} 循环拍卖活动开始 -->
+				<div class="group_buy_list clearfix">
+					<div class="fl groupImg">
+						<a href="{$auction.url}"><img src="{$auction.goods_thumb}" border="0" alt="{$auction.goods_name|escape:html}" /></a>
+					</div>
+					<div class="fl">
+                    <table border="0">
+					<tr height="30"><td><font class="ac_font"> {$lang.goods_name}：</font><a href="{$auction.url}"><font class="f14b">{$auction.goods_name|escape:html}</font></a></td></tr>
+					<tr height="30"><td><font class="ac_font"> 	{$lang.act_status}：</font>
+						<font class="f1">
+					<!-- {if $auction.status_no eq 0} -->
+					<font class="f1 f14b">{$lang.au_pre_start}</font>
+									<!-- {elseif $auction.status_no eq 1} -->
+					<font class="f1 f14b">{$lang.au_under_way_1}</font>
+									<!-- {else} -->
+					<font class="f1 f14b">{$lang.au_finished}</font>
+									<!-- {/if} -->
+						</font>	
+                    </td></tr>		
+					<tr height="30"><td><font class="ac_font">{$lang.au_start_price}：</font><font class="price">{$auction.formated_start_price}</font>
+                    </td></tr>
+					<!-- {if $auction.end_price gt 0} -->
+					<tr height="30"><td><font class="ac_font">{$lang.au_end_price}：</font><font class="price">{$auction.formated_end_price}</font>
+                    </td></tr>
+								<!-- {/if} -->
+                     </table>
+					</div>
+				</div>
+				<!--{/foreach}-->
+				<!-- {else} -->
+				 <div class="tips">{$lang.no_auction}</div>
+		<!-- {/if} -->	
+		</div>
+
+   <!-- #BeginLibraryItem "/library/pages.lbi" -->
+<!--翻页 start-->
+<div class="pagebar">
+<form name="selectPageForm" action="{$smarty.server.PHP_SELF}" method="get">
+<!-- {if $pager.styleid eq 0 } -->
+<div id="pager">
+  {$lang.pager_1}{$pager.record_count}{$lang.pager_2}{$lang.pager_3}{$pager.page_count}{$lang.pager_4} <span> <a href="{$pager.page_first}">{$lang.page_first}</a> <a href="{$pager.page_prev}">{$lang.page_prev}</a> <a href="{$pager.page_next}">{$lang.page_next}</a> <a href="{$pager.page_last}">{$lang.page_last}</a> </span>
+    <select name="page" id="page" onchange="selectPage(this)">
+    {html_options options=$pager.array selected=$pager.page}
+    </select>
+		  <!--{foreach from=$pager.search key=key item=item}-->
+      {if $key eq 'keywords'}
+          <input type="hidden" name="{$key}" value="{$item|escape:decode_url}" />
+        {else}
+          <input type="hidden" name="{$key}" value="{$item}" />
+      {/if}
+    <!--{/foreach}-->
+</div>
+<!--{else}-->
+
+<!--翻页 start-->
+ <div id="pager">
+  {$lang.pager_1}<b>{$pager.record_count}</b> {$lang.pager_2}
+  <!-- {if $pager.page_first} --><a href="{$pager.page_first}">{$lang.page_first} ...</a><!-- {/if} -->
+  <!-- {if $pager.page_prev} --><a class="prev" href="{$pager.page_prev}">{$lang.page_prev}</a><!-- {/if} -->
+  <!-- {if $pager.page_count neq 1} -->
+    <!--{foreach from=$pager.page_number key=key item=item}-->
+      <!-- {if $pager.page eq $key} -->
+      <span class="page_now">{$key}</span>
+      <!-- {else} -->
+      <a href="{$item}">{$key}</a>
+      <!-- {/if} -->
+    <!--{/foreach}-->
+  <!-- {/if} -->
+
+  <!-- {if $pager.page_next} --><a class="next" href="{$pager.page_next}">{$lang.page_next}</a><!-- {/if} -->
+  <!-- {if $pager.page_last} --><a class="last" href="{$pager.page_last}">...{$lang.page_last}</a><!-- {/if} -->
+  <!-- {if $pager.page_kbd} -->
+    <input type="text" name="page" onkeydown="if(event.keyCode==13)selectPage(this)" size="3" class="formBorder" />
+		<!--{foreach from=$pager.search key=key item=item}-->
+      {if $key eq 'keywords'}
+          <input type="hidden" name="{$key}" value="{$item|escape:decode_url}" />
+        {else}
+          <input type="hidden" name="{$key}" value="{$item}" />
+      {/if}
+    <!--{/foreach}-->
+    <!-- {/if} -->
+</div>
+<!--翻页 END-->
+
+<!-- {/if} -->
+</form>
+</div>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+function selectPage(sel)
+{
+  sel.form.submit();
+}
+{/literal}
+//-->
+</script>
+<!-- #EndLibraryItem --></div>
+</div>
+
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" -->
+ {if $helps}
+<div class="contain">
+	<div class="footer_line"></div>
+	<div class="pageFooter">
+  		<div class="artBox">
+    <div class="artList"> 
+     
+      <!-- {foreach from=$helps item=help_cat name=helps } -->
+      <div class="list" style="padding-top:15px; padding-bottom:15px;" <!--{if $smarty.foreach.helps.first}-->style="padding-left:0px;"<!--{/if}-->>
+        <h4>{$help_cat.cat_name}</h4>
+        <ul> 
+          <!-- {foreach from=$help_cat.article item=item} -->
+          <li><a href="{$item.url}" target="_blank" title="{$item.title|escape:html}">{$item.short_title}</a> </li>
+          <!-- {/foreach} --> 
+        </ul>
+      </div>
+      <!-- {/foreach} --> 
+      <div class="footer_li fl"></div>
+      <div class="fl list1" >
+      <h4 style="border:none">68ecshop官方微信</h4>
+      <img width="80px" height="80px" src="library/images/foot_weixin.gif">
+      </div>
+      <div class="fl list1" >
+      <h4 style="border:none">68ecshop手机端</h4>
+      <img width="80px" height="80px" src="library/images/foot_weixin.gif">
+      </div>
+    </div>
+
+  </div>
+	</div>
+	<div class="footer_line"></div>
+    <div class="block1">
+    	<div class="footer_service"></div>
+    </div>
+</div>
+ {/if}
+<!--帮助-->
+<div class="tc" style="margin-bottom:0px;"> 
+  <!-- {if $navigator_list.bottom} --> 
+   <div class="footer_help" style="margin-bottom:5px;">
+  <!-- {foreach name=nav_bottom_list from=$navigator_list.bottom item=nav} --> 
+  <a href="{$nav.url}" <!-- {if $nav.opennew eq 1} --> target="_blank" <!-- {/if} -->>{$nav.name}</a> 
+  <!-- {if !$smarty.foreach.nav_bottom_list.last} --> 
+  | 
+  <!-- {/if} --> 
+  <!-- {/foreach} --><br />
+  </div>
+  <!-- {/if} --> 
+    <!--友情链接 start-->
+    <!--{if $img_links  or $txt_links }-->
+    <div id="bottomNav" >
+     <div class="box_1">
+      <div class="links1 ">
+        <!--开始图片类型的友情链接{foreach from=$img_links item=link}-->
+     
+       <a href="{$link.url}" target="_blank" title="{$link.name}"><img src="{$link.logo}" alt="{$link.name}" border="0" /></a>
+       
+        <!--结束图片类型的友情链接{/foreach}-->
+        <div class="clear"></div>
+        <a href="http://www.68ecshop.com" target="_blank">68ecshop</a>
+        <a href="http://www.68ecshop.com/category-33-b0.html" target="_blank">68ecshop模板中心</a>
+        <a href="http://bbs.68ecshop.com" target="_blank">68ecshop论坛</a>
+        <!-- {if $txt_links} -->
+        <!--开始文字类型的友情链接{foreach from=$txt_links item=link}-->
+        <a href="{$link.url}" target="_blank" title="{$link.name}">{$link.name}</a>
+        <!--结束文字类型的友情链接{/foreach}-->
+        <!-- {/if} -->
+        
+            
+      </div>
+     </div>
+    </div>
+    <!--{/if}-->
+    <!--友情链接 end-->
+  {$copyright}
+  {$shop_address} {$shop_postcode} 
+  <!-- 客服电话{if $service_phone} --> 
+  Tel: {$service_phone} 
+  <!-- 结束客服电话{/if} --> 
+  <!-- 邮件{if $service_email} --> 
+  E-mail: {$service_email}<br />
+  <!-- 结束邮件{/if} --> 
+  <!-- QQ 号码 {foreach from=$qq item=im} --> 
+  <!-- {if $im} --> 
+  <a href="http://wpa.qq.com/msgrd?V=1&amp;Uin={$im}&amp;Site={$shop_name}&amp;Menu=yes" target="_blank"><img src="http://wpa.qq.com/pa?p=1:{$im}:4" height="16" border="0" alt="QQ" /> {$im}</a> 
+  <!-- {/if} --> <!-- {/foreach} 结束QQ号码 --><a href="http://www.68ecshop.com" style="display:none;">68ECSHOP模版中心</a><!-- 淘宝旺旺 {foreach from=$ww item=im} --> <!-- {if $im} --> <a href="http://amos1.taobao.com/msg.ww?v=2&uid={$im|escape:u8_url}&s=2" target="_blank"><img src="http://amos1.taobao.com/online.ww?v=2&uid={$im|escape:u8_url}&s=2" width="16" height="16" border="0" alt="淘宝旺旺" />{$im}</a> 
+  <!-- {/if} --> 
+  <!--{/foreach} 结束淘宝旺旺 --> 
+  <!-- Yahoo Messenger {foreach from=$ym item=im} --> 
+  <!-- {if $im} --> 
+  <a href="http://edit.yahoo.com/config/send_webmesg?.target={$im}n&.src=pg" target="_blank"><img src="images/yahoo.gif" width="18" height="17" border="0" alt="Yahoo Messenger" /> {$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} 结束Yahoo Messenger --> 
+  <!-- MSN Messenger {foreach from=$msn item=im} --> 
+  <!-- {if $im} --> 
+  <img src="images/msn.gif" width="18" height="17" border="0" alt="MSN" /> <a href="msnim:chat?contact={$im}">{$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} 结束MSN Messenger --> 
+  <!-- Skype {foreach from=$skype item=im} --> 
+  <!-- {if $im} --> 
+  <img src="http://mystatus.skype.com/smallclassic/{$im|escape:url}" alt="Skype" /><a href="skype:{$im|escape:url}?call">{$im}</a> 
+  <!-- {/if} --> 
+  <!-- {/foreach} --><br />
+  <!-- ICP 证书{if $icp_number} --> 
+  {$lang.icp_number}:<a href="http://www.miibeian.gov.cn/" target="_blank">{$icp_number}</a><br />
+  <!-- 结束ICP 证书{/if} --> 
+  <div id="footer_ban">
+  <a href="http://www.68ecshop.com" target="_blank">  <img src="library/images/footer.jpg" alt="68ecshop版权所有" /></a>
+  <a href="http://www.68ecshop.com" target="_blank"><p>68ecshop模板</p></a>
+
+  </div>
+</div>
+  {insert_scripts files='common.min.js'}
+<SCRIPT type=text/javascript>
+_LOAD_SCRIPT_('themes/68ecshop_wangyibaojian/js/chat.float.min.js?020');
+</SCRIPT><!-- #EndLibraryItem --></body>
+</html>

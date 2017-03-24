@@ -1,0 +1,51 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="__TPL__/css/my.css">
+<div class="con"> 
+  <header class="ect-header">
+  	<a href="__ROOT__/" class="pull-left ect-icon ect-icon-logo"></a>
+	<div class="ect-header-div">
+		<a href="{:url('category/top_all')}" class="pull-right ect-icon ect-icon-cate1"></a>
+		<div class="ect-btn-search-div pull-right">
+			<button class="btn btn-default ect-text-left ect-btn-search" onClick="javascript:openSearch();"><i class="fa fa-search"></i>&nbsp;{$lang.no_keywords}</button>
+		</div>		
+	</div>   
+  </header>
+    <!--banner滚动图片s-->
+  <div id="focus" class="focus">
+    <div class="hd">
+      <ul></ul>
+    </div>
+    <div class="bd">
+      {insert name='ads' id=1 num=9}
+    </div>
+  </div>  
+  <!--首页快速导航-->  
+ <div>  <nav class="container-fluid">
+    <ul class="row ect-row-nav">
+      <!--{foreach from=$navigator item=nav}--> 
+      <a href="{$nav.url}">
+      <li class="col-sm-3 col-xs-3"><i><img src="{$nav.pic}" ></i>
+        <p class="text-center">{$nav.name}</p>
+      </li>
+      </a> 
+      <!--{/foreach}-->
+    </ul>
+  </nav></div> 
+ <!--<div align="center" class="red">公告：代金券本期50天3倍，预计下期50天2倍！</div>-->
+  <!--<div class="protitle"></div>-->
+  <!-- #BeginLibraryItem "/library/recommend_hot.lbi" --><!-- #EndLibraryItem -->
+  <!--<div id="index_con">
+    <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06.png" /></p>
+	</div>-->
+  <footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div align="center" class="red">平台访问：{$click_number}人次</div>
+  <div style="padding-bottom:5.5em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<script type="text/javascript">
+get_asynclist("{:url('index/ajax_goods', array('type'=>'best'))}" , '__TPL__/images/loader.gif');
+</script>

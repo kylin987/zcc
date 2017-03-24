@@ -1,0 +1,49 @@
+<!-- $Id: user_account_check.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+<form method="post" action="user_apply_manage.php" name="theForm" >
+<table border="0" width="100%">
+  <tr>
+    <td colspan="2"><strong>会员申请合伙人信息：</strong><hr /></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+    <strong>会员名称：</strong>{$apply_info.username} &nbsp;&nbsp;<strong>真实姓名：</strong>{$apply_info.tname} &nbsp;&nbsp;<strong>手机号：</strong>{$apply_info.phone}&nbsp;&nbsp;<strong>身份证号：</strong>{$apply_info.sf_code}
+    &nbsp;&nbsp;<strong>提交时间：</strong>{$apply_info.time}
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>会员备注：</strong>{$apply_info.user_note}<hr /></td>
+  </tr> 
+  <tr>
+    <th width="15%" valign="middle" align="right">管理员备注：</th>
+    <td width="85%">
+      <textarea name="admin_note" cols="55" rows="5">{$apply_info.admin_note}</textarea>
+    </td>
+  </tr>
+  <tr>
+    <th width="15%" valign="middle" align="right">状态：</th>
+    <td>
+      <input name="pay_status" type="radio" value="0" {if $apply_info.pay_status eq 0} checked="checked" {/if} />
+      未付款  &nbsp;&nbsp; <input name="pay_status" type="radio" value="1" {if $apply_info.pay_status eq 1} checked="checked" {/if} />已付款
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+      <input type="hidden" name="act" value="edit" />
+      <input type="hidden" name="id" value="{$apply_info.id}" />
+	  <input type="hidden" name="user_id" value="{$apply_info.user_id}" />
+	  <input type="hidden" name="daili_amount" value="{$apply_info.daili_amount}" />
+      <input name="submit" type="submit" value="{$lang.button_submit}" class="button_new" />
+      <input type="reset" value="{$lang.button_reset}" class="button_new" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+
+{/literal}
+{include file="pagefooter.htm"}

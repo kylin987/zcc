@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<meta name="Keywords" content="{$meta_keywords}" />
+
+<meta name="Description" content="{$meta_description}" />
+
+<title>{$page_title}</title>
+
+<link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="{$ectouch_css_path}">
+
+<link rel="stylesheet" href="__TPL__/css/user.css">
+
+<link rel="stylesheet" href="__TPL__/css/photoswipe.css">
+
+</head>
+
+
+
+</head><body>
+
+<div class="con">
+	<!--<div class="ky_top_word">-->
+		<!-- {if $is_special == 0} -->
+			<!--<p>您为非代理用户，不享受代理红包加成奖励</p>
+			<p><a href="http://www.qiankangyuan.com/mobile/index.php?c=topic&a=index&id=1">点击申请成为代理</a></p>-->
+		<!-- {else} -->
+			<!--<p>您为{$rank_name}，享受{$rank_name}代理红包加成奖励</p>-->
+		<!-- {/if} -->
+	<!--</div>	-->
+<!-- {if $share.config.separate_by == 0} -->
+  <table width="100%" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd" class="u-table">
+  	<tr align="center">
+  		<td colspan="4"><div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-2.png" /></p>
+	</div></td>
+	</tr>
+	 <tr align="center" class="first-tr">
+      <td colspan="4"><b>
+      <p class="k_rankname">您当前：{$rank_name}，还需：***贡献点达到：***  {$next_rank_name}  
+      44444
+      </b></td>
+    </tr>
+    <tr align="center" class="first-tr">
+      <td>部落等级</td>
+      <td>部落人数</td>
+      <td>{$rank_name}<br>享受红包奖励</td>
+      <td>下级享受奖励</td>
+    </tr>
+    
+    <tr align="center">
+      <td>嫡系部落</td>
+      <td>{$affdb.1.num}人</td>
+      <td>2.09%</td>
+      <td><font color="#FF0000">{$affdb.1.zhuijia}</font></td>
+    </tr>
+	<tr align="center">
+      <td>旁系部落</td>
+      <td>{$affdb.2.num}人</td>
+      <td>1.54%</td>
+      <td><font color="#FF0000">{$affdb.2.zhuijia}</font></td>
+    </tr>
+	<tr align="center">
+      <td>支脉部落</td>
+      <td>{$affdb.3.num}人</td>
+      <td>1.10%</td>
+      <td><font color="#FF0000">{$affdb.3.zhuijia}</font></td>
+    </tr>
+  </table>
+  <!-- {/if} -->
+
+
+<div class="ect-pro-list ect-share-list">
+
+	<ul>
+
+		<!--{foreach from=$list item=item}-->
+
+		<li><a href="{:url('sale/order_list',array('uid'=>$this->_var['item']['user_id']))}" >
+
+			<strong class="pull-left"><!--{if $item.nicheng}-->{$item.nicheng}<!--{else}-->{$item.user_name}<!--{/if}--></strong><span style="margin-left:3rem;">"{$item.rank_name}"</span><span style="margin-left:3rem;">"{$item.ceng}"</span>
+
+            <br/>
+
+            <span class="ect-color999">注册时间 {$item.reg_time}</span>
+
+           <i class="pull-right fa fa-angle-right" style="margin-top:-1.3rem;"></i>
+
+        </a></li>
+
+		<!--{/foreach}-->
+
+		
+
+    </ul>
+
+	
+
+</div>{include file='library/page.lbi '}
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+
+</div><br>
+
+
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script> 
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.json.js" ></script> 
+
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/js/jquery.more.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/js/utils.js" ></script> 
+
+<script src="__TPL__/js/TouchSlide.1.1.js"></script> 
+
+<script src="__TPL__/js/ectouch.js"></script> 
+
+<script src="__TPL__/js/simple-inheritance.min.js"></script> 
+
+<script src="__TPL__/js/code-photoswipe-1.0.11.min.js"></script> 
+
+<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script> 
+
+<script src="__TPL__/js/jquery.scrollUp.min.js"></script> 
+
+<script type="text/javascript" src="__PUBLIC__/js/validform.js" ></script> 
+
+<script language="javascript">
+
+	/*banner滚动图片*/
+
+		TouchSlide({
+
+			slideCell : "#focus",
+
+			titCell : ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+
+			mainCell : ".bd ul",
+
+			effect : "left",
+
+			autoPlay : true, // 自动播放
+
+			autoPage : true, // 自动分页
+
+			delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+
+			interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+
+			switchLoad : "_src" // 切换加载，真实图片路径为"_src"
+
+		});
+
+	/*弹出评论层并隐藏其他层*/
+
+	function openSearch(){
+
+		if($(".con").is(":visible")){
+
+			$(".con").hide();	
+
+			$(".search").show();
+
+		}
+
+	}
+
+	function closeSearch(){
+
+		if($(".con").is(":hidden")){
+
+			$(".con").show();	
+
+			$(".search").hide();
+
+		}
+
+	}
+
+</script> 
+
+</body></html>

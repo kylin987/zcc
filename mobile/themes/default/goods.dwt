@@ -1,0 +1,307 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-eleganti.min.css">
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+// 微信配置
+wx.config({
+    debug: false, 
+    appId: '{$wx_share.appid}', 
+    timestamp: '{$wx_share.timestamp}', 
+    nonceStr: '{$wx_share.wxnonceStr}', 
+    signature: '{$wx_share.wxSha1}',
+    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'] // 功能列表，我们要使用JS-SDK的什么功能
+});
+// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在 页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready 函数中。
+wx.ready(function(){
+    // 获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareTimeline({
+        title: '{$page_title}', // 分享标题
+        link: '{$wx_share.dq_url2}',
+        imgUrl: "{$goods.goods_thumb}" // 分享图标
+    });
+    // 获取“分享给朋友”按钮点击状态及自定义分享内容接口
+    wx.onMenuShareAppMessage({
+        title: '{$page_title}', // 分享标题
+        desc: '{$goods.goods_brief}', // 分享描述
+        link: '{$wx_share.dq_url2}',
+        imgUrl: '{$goods.goods_thumb}', // 分享图标
+        type: 'link', // 分享类型,music、video或link，不填默认为link
+    });
+});
+</script>
+<style type="text/css">
+#k_share i {color: #1bae5d; font-size: 1.5em;line-height: 1.2;}
+</style>
+<div class="con">
+  
+  <!--商品图片相册-->
+  <div id="focus" class="focus goods-focus ect-padding-lr ect-margin-tb">
+    <div class="hd">
+      <ul>
+      </ul>
+    </div>
+    <div class="bd">
+      <ul id="Gallery">
+        <li><a href="{$goods.goods_img}"><img src="{$goods.goods_img}" alt="{$goods.goods_name}" /></a></li>
+        <!--{if $pictures}--> 
+        <!-- {foreach from=$pictures item=picture name=no}--> 
+        <!-- {if $smarty.foreach.no.iteration > 1}  -->
+        <li><a href="{$picture.img_url}"><img src="{$picture.img_url}" alt="{$picture.img_desc}" /></a></li>
+        <!-- {/if}--> 
+        <!--{/foreach}--> 
+        <!--{/if}-->
+      </ul>
+    </div>
+  </div>
+  <!--商品属性介绍-->
+  <div class="goods-info ect-padding-tb"> 
+    <!--商品描述-->
+    <section class="ect-margin-tb ect-margin-lr goods-title">
+      <h4 class="title pull-left">{$goods.goods_style_name}</h4>
+      <span class="pull-right text-center <!--{if $sc eq 1}-->ect-colory<!--{/if}--> ect-padding-lr" onClick="collect({$goods.goods_id})" id='ECS_COLLECT'> <i style="line-height:1.3" class="fa <!--{if $sc eq 1}-->fa-heart<!--{else}-->fa-heart-o<!--{/if}-->"></i><br>
+      {$lang.btn_collect} </span> 
+	  <span class="pull-right text-center  ect-padding-lr" onclick="wx_share()" id="k_share"> <i class="social_share_circle k_share"></i><br>
+      分享 </span> 
+	  </section> 
+    <section class="ect-margin-tb ect-margin-lr ">
+      <p><span class="pull-left">{$lang.amount}：<b class="ect-colory" id="ECS_GOODS_AMOUNT"></b></span><span class="pull-right">{$lang.sort_sales}：{$sales_count} {$lang.piece}</span></p>
+      <p><!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->{$lang.promote_price}<!--{else}--><!--{/if}--><!--{if $goods.is_promote and $goods.gmt_end_time } 促销--> 
+        <!--{$goods.promote_price}  -->
+        <!--{else}--> 
+       
+        <!--{/if}--> <small> <del><!-- {if $cfg.show_marketprice} 市场价格-->市场零售价：{$goods.market_price} <!-- {/if} --></del></small>
+	  </p>
+	  <p><!--{if $goods.is_promote and $goods.gmt_end_time } 促销--><strong id="leftTime" class="price">{$lang.please_waiting}</strong><!--{/if}--></p>
+		 
+    </section>
+	<section class="ect-margin-tb ect-margin-lr ">
+      <!--<p>{$ky_info}</p>-->		 
+    </section>
+    <!-- {if $promotion} 优惠活动 -->
+    <section class="ect-margin-tb ect-margin-bottom0 ect-padding-tb goods-promotion ect-padding-lr ">
+      <h5><b>{$lang.activity}：</b></h5>
+      <p class="ect-border-top ect-margin-tb"> 
+        <!-- {foreach from=$promotion item=item key=key} 优惠活动--> 
+        <!-- {if $item.type eq "snatch"} --> 
+        <a href="{$item.url}" title="{$lang.snatch}"><i class="label tbqb">{$lang.snatch_act}</i> [{$lang.snatch}]<i class="pull-right fa fa-angle-right"></i></a>
+        <!-- {elseif $item.type eq "group_buy"} --> 
+        <a href="{$item.url}" title="{$lang.group_buy}"><i class="label tuan">{$lang.group_buy_act}</i> [{$lang.group_buy}]<i class="pull-right fa fa-angle-right"></i></a> 
+        <!-- {elseif $item.type eq "auction"} --> 
+        <a href="{$item.url}" title="{$lang.auction}"><i class="label pm">{$lang.auction_act}</i> [{$lang.auction}]<i class="pull-right fa fa-angle-right"></i></a>
+        <!-- {elseif $item.type eq "favourable"} --> 
+        <a href="{$item.url}" title="{$lang.$item.type} {$item.act_name}{$item.time}"> 
+        <!--{if $item.act_type eq 0}--> 
+        <i class="label mz">{$lang.favourable_mz}</i> 
+        <!--{elseif $item.act_type eq 1}--> 
+        <i class="label mj">{$lang.favourable_mj}</i> 
+        <!--{elseif $item.act_type eq 2}--> 
+        <i class="label zk">{$lang.favourable_zk}</i> 
+        <!--{/if}-->{$item.act_name} <i class="pull-right fa fa-angle-right"></i></a> 
+        <!-- {/if} --> 
+        <!-- {/foreach} --> 
+      </p>
+    </section>
+    <!-- {/if} --> 
+    <!--商品评价-->
+    
+    <form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+      <section class="ect-padding-lr ect-padding-tb goods-option">
+        
+        <div class="goods-num"> <span class="pull-left">{$lang.number}：</span> 
+          <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+          <div class="input-group pull-left wrap"><span class="input-group-addon sup" onClick="changePrice('1')">-</span>
+            <input type="text" class="form-contro form-num"  name="number" id="goods_number" autocomplete="off" value="1" onFocus="back_goods_number()"  onblur="changePrice('2')"/>
+            <span class="input-group-addon plus" onClick="changePrice('3')">+</span></div>
+          <!-- {else} -->
+          <input type="text" class="form-contro form-num" readonly value="{$goods.goods_number} "/>
+          <!-- {/if} --> 
+        </div>
+      </section>
+	  
+	  
+	  
+	  
+      <div class="goods-info ect-padding-tb">
+		<!--商品描述-->
+		  <section class="user-tab ect-border-bottom0">
+			<div id="is-nav-tabs" style="height:3.15em; display:none;"></div>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs text-center">
+			  <li class="col-xs-6 active"><a href="#one" role="tab" data-toggle="tab">{$lang.goods_brief}</a></li>
+			  <li class="col-xs-6"><a href="#two" role="tab" data-toggle="tab">{$lang.goods_attr}</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+			  <div class="tab-pane tab-info active" id="one"> {$goods.goods_desc}</div>
+			  <div class="tab-pane tab-att" id="two">
+				<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#dddddd">
+				  <!-- {foreach from=$properties item=property_group key=key} -->
+				  <tr>
+					<th colspan="2" bgcolor="#FFFFFF">{$key|escape}</th>
+				  </tr>
+				  <!-- {foreach from=$property_group item=property} -->
+				  <tr>
+					<td bgcolor="#FFFFFF" align="left" width="30%" class="f1">[{$property.name|escape:html}]</td>
+					<td bgcolor="#FFFFFF" align="left" width="70%">{$property.value}</td>
+				  </tr>
+				  <!-- {/foreach}--> 
+				  <!-- {/foreach}-->
+				</table>
+			  </div>
+			</div>
+		  </section>
+	  </div>
+	  
+	  
+	  
+	  
+	  
+      <div class="ect-padding-tb goods-submit">
+        <div><a type="botton" class="btn btn-info ect-btn-info ect-colorf ect-bg" style="background:#1bae5d none repeat scroll 0 0 !important;" href="javascript:addToCart_quick({$goods.goods_id})">{$lang.buy_now}</a></div>
+      </div>
+      <section class="user-tab ect-border-bottom0" style="display:none;">
+        <div id="is-nav-tabs" style="height:3.15em; display:none;"></div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs text-center">
+          <li class="col-xs-4 active"><a href="#one" role="tab" data-toggle="tab">{$lang.goods_brief}</a></li>
+          <li class="col-xs-4"><a href="#two" role="tab" data-toggle="tab">{$lang.goods_attr}</a></li>
+          <li class="col-xs-4"><a href="#three" role="tab" data-toggle="tab">{$lang.user_comment}({$goods.comment_count})</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane tab-info active" id="one"> {$goods.goods_desc}</div>
+          <div class="tab-pane tab-att" id="two">
+            <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#dddddd">
+              <!-- {foreach from=$properties item=property_group key=key} -->
+              <tr>
+                <th colspan="2" bgcolor="#FFFFFF">{$key|escape}</th>
+              </tr>
+              <!-- {foreach from=$property_group item=property} -->
+              <tr>
+                <td bgcolor="#FFFFFF" align="left" width="30%" class="f1">[{$property.name|escape:html}]</td>
+                <td bgcolor="#FFFFFF" align="left" width="70%">{$property.value}</td>
+              </tr>
+              <!-- {/foreach}--> 
+              <!-- {/foreach}-->
+            </table>
+          </div>
+          
+        </div>
+      </section>
+    </form>
+  </div>
+  
+  <footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:10em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem --> 
+<script type="text/javascript" src="__TPL__/js/lefttime.js"></script> 
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function(){Code.photoSwipe('a', '#Gallery');}, false);
+
+
+/*倒计时*/
+var goods_id = {$goods.goods_id};
+var goodsattr_style = 1;
+var goodsId = {$goods_id};
+
+var gmt_end_time = "{$goods.gmt_end_time|default:0}";
+{foreach from=$lang.goods_js item=item key=key}
+var {$key} = "{$item}";
+{/foreach}
+var now_time = {$now_time};
+
+var use_how_oos = {:C('use_how_oos')};
+onload = function(){
+  changePrice(2);
+  fixpng();
+  try {onload_leftTime();}
+  catch (e) {}
+}
+function back_goods_number(){
+ var goods_number = document.getElementById('goods_number').value;
+  document.getElementById('back_number').value = goods_number;
+}
+/**
+ * 点选可选属性或改变数量时修改商品价格的函数
+ */
+function changePrice(type)
+{
+  var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+  if(type == 1){qty--; }
+  if(type == 3){qty++; }
+  if(qty <=0 ){ qty=1; }
+  if(!/^[0-9]*$/.test(qty)){ qty = document.getElementById('back_number').value; }
+  document.getElementById('goods_number').value = qty;
+  var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+  $.get('{:url("goods/price")}', {'id':goodsId,'attr':attr,'number':qty}, function(data){
+    changePriceResponse(data);
+  }, 'json');
+}
+
+
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res){
+  if (res.err_msg.length > 0){
+    alert(res.err_msg);
+  } else {
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+<!-- {/literal} -->
+/**
+ * 接收返回的信息
+ */
+function changePriceResponse(res){
+  if (res.err_msg.length > 0){
+    alert(res.err_msg);
+  } else {
+    if (document.getElementById('ECS_GOODS_AMOUNT'))
+      document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+  }
+}
+
+/*判断user-tab是否距顶，距顶悬浮*/
+var nav_tabs_top = $(".user-tab .nav-tabs").offset().top;//获取nav-tabs距离顶部的位
+function func_scroll(){//定义一个事件效果置
+	var documentTop = $(document).scrollTop();//获取滚动条距离顶部距离
+	if(nav_tabs_top <= documentTop){
+		$(".user-tab").addClass("user-tab-fixed");
+		$("#is-nav-tabs").css("display","block");
+	}else{
+		$(".user-tab").removeClass("user-tab-fixed");
+		$("#is-nav-tabs").css("display","none");		
+	}
+}
+
+window.onscroll = function () {
+	 func_scroll();
+}
+</script> 
+<script type="text/javascript">
+	TouchSlide({ 
+		slideCell:"#picScroll",
+		titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+		autoPage:"true", //自动分页
+		pnLoop:"false", // 前后按钮不循环
+		switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+	});
+</script>
+<script type="text/javascript">
+	function wx_share(){
+		$("#mcover").css("display","block");    // 分享给好友按钮触动函数
+		
+	}	
+	function weChat(){
+		$("#mcover").css("display","none");  // 点击弹出层，弹出层消失
+	}	
+</script>
+<div id="mcover" onclick="weChat()" style="display:none;">
+    <img src="__ROOT__/themes/default/images/k_share.png" />
+</div>			
+</body></html>

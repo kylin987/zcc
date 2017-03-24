@@ -1,0 +1,66 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-13.png" /></p>
+   <p style="text-align:center; color:#FF0000;">
+   		大礼包已激活：{$spree_number.is_check}个，未激活：{$spree_number.no_check}个
+   </p>
+   <div class="buy_spree"><a href="{:url('user/buy_spree_list')}" class="log">礼包记录</a><a class="buy" href="{:url('user/buy_spree')}">购买礼包</a></div>
+</div>
+<div class="ky_note">
+  <table width="100%" cellspacing="2" class="spree_table">  	
+    <tr>
+      <td><strong>礼包编号</strong></td>
+	  <td><strong>礼包获得日期</strong></td>
+      <td><strong>状态</strong></td>
+      <td><strong>有效激活日期</strong></td>
+	  <td><strong>操作</strong></td>
+    </tr>
+	<!--{foreach from=$spree item=item}-->
+    <tr>
+      <td>{$item.spree_sn}</td>
+      <td>{$item.ex_time}</td>
+      <td>{$item.is_check}</td>
+	  <td>{$item.check_time}</td>
+	  <td>{if $item.can_sell == 1}<a style="color:#FF0000;" href="{:url('user/sell_spree')}&id={$item.id}">出售该礼包</a>{elseif $item.can_sell == 2}待售中|<a style="color:#999;" href="{:url('user/cacle_sell_spree')}&id={$item.id}">取消</a>{elseif $item.can_sell == 3}<font color="#f00">已驳回</font>|<a style="color:#999;" href="{:url('user/regain_sell_spree')}&id={$item.id}">查看</a>{else}不可出售{/if}</td>
+    </tr>
+	<!--{/foreach}-->
+  </table>
+</div>
+{include file='library/page.lbi '}
+<div style="padding-bottom:0.2em;"></div>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+</footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="__TPL__/js/Checkable.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		$('input.myClass').Checkable({
+			color: 'blue'			 
+		});
+		var regBtn = $("#next");
+		$("#agree").change(function(){
+			var that = $(this);
+			//alert(that.attr('checked'));
+			//that.prop("checked",that.prop("checked"));
+			if(that.attr('checked')){
+				regBtn.prop("disabled",false)
+			}else{
+				regBtn.prop("disabled",true)
+			}
+		});
+	});	
+	/*
+	$('#agree').change(function() {
+        $('#next').removeAttr("disabled");
+    });
+	*/
+</script>
+
+</body>
+</html>

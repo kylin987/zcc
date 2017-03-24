@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="Keywords" content="{$meta_keywords}" />
+<meta name="Description" content="{$meta_description}" />
+<title>我的微销_{$page_title}</title>
+<link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
+<link rel="stylesheet" href="{$ectouch_css_path}">
+<link rel="stylesheet" href="__TPL__/css/user.css">
+<link rel="stylesheet" href="__TPL__/css/photoswipe.css">
+</head>
+<body>
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-7.png" /></p>
+	</div>
+<div class="con">
+
+<div class="ect-pro-list ect-share-order">
+<ul>
+<!--{foreach from=$orders_list item=item}-->
+<li>
+  <h4 class="ect-padding-lr ect-padding-tb ect-clear-over"> <span class="pull-left">{$item.nickname} 购买</span> <span class="pull-right">{$item.is_pay}</span></h4>  
+  <h5 class="ect-padding-lr ect-padding-tb ect-clear-over"> <span class="pull-left">总金额：{$item.total_fee}</span> <span class="pull-right">{$item.is_separate}</span> </h5>
+</li>
+<!--{/foreach}-->
+</ul>
+</div>
+{include file='library/page.lbi '}
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div><br>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.json.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.more.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/utils.js" ></script>
+<script src="__TPL__/js/TouchSlide.1.1.js"></script>
+<script src="__TPL__/js/ectouch.js"></script>
+<script src="__TPL__/js/simple-inheritance.min.js"></script>
+<script src="__TPL__/js/code-photoswipe-1.0.11.min.js"></script>
+<script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+<script src="__TPL__/js/jquery.scrollUp.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/validform.js" ></script>
+<script language="javascript">
+
+	/*banner滚动图片*/
+
+		TouchSlide({
+
+			slideCell : "#focus",
+
+			titCell : ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+
+			mainCell : ".bd ul",
+
+			effect : "left",
+
+			autoPlay : true, // 自动播放
+
+			autoPage : true, // 自动分页
+
+			delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+
+			interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+
+			switchLoad : "_src" // 切换加载，真实图片路径为"_src"
+
+		});
+
+	/*弹出评论层并隐藏其他层*/
+
+	function openSearch(){
+
+		if($(".con").is(":visible")){
+
+			$(".con").hide();	
+
+			$(".search").show();
+
+		}
+
+	}
+
+	function closeSearch(){
+
+		if($(".con").is(":hidden")){
+
+			$(".con").show();	
+
+			$(".search").hide();
+
+		}
+
+	}
+
+</script>
+</body>
+</html>

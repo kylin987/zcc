@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="Keywords" content="{$keywords}" />
+<meta name="Description" content="{$description}" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>微信扫码支付</title>
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" href="animated_favicon.gif" type="image/gif" />
+<link href="{$ecs_css_path}" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS|{$page_title}" href="{$feed_url}" />
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var int;
+	$().ready(function(){
+		int=setInterval("get_res()", parseInt(10) * 400);
+	});
+	function get_res(){
+		var order_sn = {$order_sn};
+		var order_type = {$order_type};			
+		$.ajax({
+			url:'user.php?act=get_res',
+			type:'post',
+			data:{order_sn:order_sn,order_type:order_type},
+			dataType:'json',
+			success:function(data){
+				if(data.status){					
+					$('#tishi').hide();
+					$('#qr_img').remove();	
+					$('#wancheng').html(data.info);
+					if(data.type){
+						$('#tiaozhuan2').show();
+					}else{	
+						$('#tiaozhuan').show();
+					}					
+					clearInterval(int);	
+				}															
+			}
+			 
+		});
+	}
+</script>
+
+</head>
+<body style="background:#222222">
+<div style="text-align:center; padding-top:10%;">
+	<h2 id="tishi">请用微信扫码并支付</h2>
+	<div id="qr_con">
+		<img id="qr_img" src="{$img_url}" />
+		<p id="wancheng"></p><br />
+		<p id="tiaozhuan"><a href="user.php?act=order_detail&order_id={$order_id}">支付完成，点击跳转到订单详情</a></p>
+		<p id="tiaozhuan2"><a href="user.php?act=account_detail">支付完成，点击返回</a></p>
+	</div>	
+</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+
+<title>千康元</title>
+
+<link rel="stylesheet" href="/mobile/data/common/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="/mobile/data/common/bootstrap/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="/mobile/themes/default/css/ectouch_black.css">
+
+<link rel="stylesheet" href="/mobile/themes/default/css/photoswipe.css">
+
+</head><body><link href="/mobile/themes/default/css/my.css" rel="stylesheet" type="text/css">
+<!--<div class="con"> 
+  <div id="index_con">
+   <p style="text-align:center;">
+   <img src="/mobile/themes/default/images/indl/W01.png" /></p>
+	</div>-->  
+    
+  <div id="focus" class="focus">
+    <div class="hd">
+      <ul></ul>
+    </div>
+    <div class="bd">
+          </div>
+  </div>  
+    
+ <div>  <nav class="container-fluid">
+    <ul class="row ect-row-nav">
+          </ul>
+  </nav></div> 
+  <div class="protitle"></div>
+  <div class="ect-pro-list">
+  <ul id="J_ItemList">
+  	<li class="single_item">
+    </li>
+     <a href="javascript:;" style="text-align:center" class="get_more"></a>
+  </ul>
+ </div>
+    <div id="index_con">
+   <p style="text-align:center;">
+   <img src="/mobile/themes/default/images/indl/W06.png" /></p>
+	</div>
+  <footer>
+    <nav class="ect-nav2"><ul class="ect-diaplay-box text-center">
+  <li class="ect-box-flex"><a href="/mobile/index.php?m=default&c=index&a=index"><i class="ect-icon-2 ect-icon-home_k"></i>首页</a></li>
+  <li class="ect-box-flex"><a href="/mobile/index.php?m=default&c=flow&a=cart"><i class="ect-icon-2 ect-icon-flow"></i>购物车</a></li>  
+  <li class="ect-box-flex"><a href="/mobile/index.php?m=default&c=sale&a=line"><i class="ect-icon-2 ect-icon-erwei"></i>我的部落</a></li>
+  <li class="ect-box-flex"><a href="/mobile/index.php?m=default&c=article&a=index"><i class="ect-icon-2 ect-icon-zixun"></i>玛咖资讯</a></li> 
+  <li class="ect-box-flex" style="background:none;"><a href="/mobile/index.php?m=default&c=user&a=index"><i class="ect-icon-2 ect-icon-user"></i>个人中心</a></li>
+</ul></nav>
+  </footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<div class="search" style="display:none;">
+  <div class="ect-bg">
+    <header class="ect-header ect-margin-tb ect-margin-lr text-center"><span>搜索</span><a href="javascript:;" onClick="closeSearch();"><i class="icon-close pull-right"></i></a></header>
+  </div>
+  <div class="ect-padding-lr">
+     <form action="/mobile/index.php?m=default&c=category&a=index"  method="post" id="searchForm" name="searchForm">
+      <div class="input-search"> <span>
+        <input name="keywords" type="search" placeholder="请输入搜索关键词！" id="keywordBox">
+        </span>
+        <button type="submit" value="搜索" onclick="return check('keywordBox')"><i class="glyphicon glyphicon-search"></i></button>
+      </div>
+    </form>
+     
+  </div>
+</div>
+
+<style>
+#scrollUp {
+	border-radius:100%;
+	background-color: #777;
+	color: #eee;
+	font-size: 40px;
+	line-height: 1;text-align: center;text-decoration: none;bottom: 1em;right: 10px;overflow: hidden;width: 46px;
+	height: 46px;
+	border: none;
+	opacity: 0.6;
+}
+</style>
+<script type="text/javascript" src="/mobile/data/common/js/jquery.min.js" ></script> 
+<script type="text/javascript" src="/mobile/data/common/js/jquery.json.js" ></script> 
+<script type="text/javascript" src="/mobile/data/common/js/common.js"></script> 
+<script type="text/javascript" src="/mobile/data/common/js/jquery.more.js"></script> 
+<script type="text/javascript" src="/mobile/data/common/js/utils.js" ></script> 
+<script src="/mobile/themes/default/js/TouchSlide.1.1.js"></script> 
+<script src="/mobile/themes/default/js/ectouch.js"></script> 
+<script src="/mobile/themes/default/js/simple-inheritance.min.js"></script> 
+<script src="/mobile/themes/default/js/code-photoswipe-1.0.11.min.js"></script> 
+<script src="/mobile/data/common/bootstrap/js/bootstrap.min.js"></script> 
+<script src="/mobile/themes/default/js/jquery.scrollUp.min.js"></script> 
+<script type="text/javascript" src="/mobile/data/common/js/validform.js" ></script> 
+<script language="javascript">
+	/*banner滚动图片*/
+		TouchSlide({
+			slideCell : "#focus",
+			titCell : ".hd ul", // 开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			mainCell : ".bd ul",
+			effect : "left",
+			autoPlay : true, // 自动播放
+			autoPage : true, // 自动分页
+			delayTime: 200, // 毫秒；切换效果持续时间（执行一次效果用多少毫秒）
+			interTime: 2500, // 毫秒；自动运行间隔（隔多少毫秒后执行下一个效果）
+			switchLoad : "_src" // 切换加载，真实图片路径为"_src"
+		});
+	/*弹出评论层并隐藏其他层*/
+	function openSearch(){
+		if($(".con").is(":visible")){
+			$(".con").hide();	
+			$(".search").show();
+		}
+	}
+	function closeSearch(){
+		if($(".con").is(":hidden")){
+			$(".con").show();	
+			$(".search").hide();
+		}
+	}
+</script> 
+ 
+<script type="text/javascript">
+get_asynclist("/mobile/index.php?m=default&c=index&a=ajax_goods&type=best" , '/mobile/themes/default/images/loader.gif');
+</script>

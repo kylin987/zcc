@@ -1,0 +1,40 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="__TPL__/css/Checkable.css" />
+<div id="index_con">
+   <p style="text-align:center;">
+   <img src="__TPL__/images/indl/W06-13.png" /></p>   
+</div>
+<form action="{:url('user/cacle_sell_spree')}" method="post" enctype="multipart/form-data" name="formMsg">
+  <section class="ect-bg-colorf user-service flow-consignee">
+    <ul>
+      <li class="input-text" style="text-align:center;">
+	  	<strong>取消出售礼包<br></strong>({$spree_info.spree_sn})
+      </li>
+      <li>
+        <div class="input-text"><b>售&nbsp;&nbsp;价：</b><span>
+          {$spree_info.sell_price}
+          </span></div>
+      </li>
+      <li>
+        <div class="input-text"><b>留&nbsp;&nbsp;言：</b>
+          {$spree_info.sell_beizhu}
+        </div>
+      </li>
+    </ul>
+  </section>
+  <input type="hidden" name="spree_id" value="{$spree_info.id}" />
+  <div class="two-btn ect-padding-tb ect-padding-lr ect-margin-tb text-center">
+    <input type="submit" value="确定取消" class="btn btn-info ect-bg-colory" />
+  </div>
+</form>
+<footer>
+    <nav class="ect-nav2"><!-- #BeginLibraryItem "/library/page_menu2.lbi" --><!-- #EndLibraryItem --></nav>
+</footer>
+  <div style="padding-bottom:4.2em;"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+
+</body>
+</html>

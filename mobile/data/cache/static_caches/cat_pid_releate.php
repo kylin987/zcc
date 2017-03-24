@@ -1,0 +1,95 @@
+<?php
+$data = array (
+  0 => 
+  array (
+    'cat_id' => '24',
+    'cat_name' => '超值礼包',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '40',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  1 => 
+  array (
+    'cat_id' => '27',
+    'cat_name' => '红酒兑换',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  2 => 
+  array (
+    'cat_id' => '28',
+    'cat_name' => '珠宝玉石',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  3 => 
+  array (
+    'cat_id' => '29',
+    'cat_name' => '家居生活',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  4 => 
+  array (
+    'cat_id' => '26',
+    'cat_name' => '汽车兑换',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+  5 => 
+  array (
+    'cat_id' => '23',
+    'cat_name' => '芦荟制品',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '1',
+    'show_in_nav' => '1',
+    'grade' => '0',
+    'sort_order' => '50',
+    'has_children' => '0',
+    'goods_num' => '3',
+  ),
+  6 => 
+  array (
+    'cat_id' => '25',
+    'cat_name' => '房产兑换',
+    'measure_unit' => '',
+    'parent_id' => '0',
+    'is_show' => '0',
+    'show_in_nav' => '0',
+    'grade' => '0',
+    'sort_order' => '60',
+    'has_children' => '0',
+    'goods_num' => 0,
+  ),
+);
+?>

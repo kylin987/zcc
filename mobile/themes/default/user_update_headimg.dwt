@@ -1,0 +1,90 @@
+<!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem --> 
+<link rel="stylesheet" href="__TPL__/css/update_style.css">
+<!--加载资源-->
+<div class="lazy_tip" id="lazy_tip">
+	<span>1%</span><br>
+	正在加载图片......
+</div>
+<div class="lazy_cover"></div>
+<div class="resource_lazy hide"></div>
+
+<div class="pic_edit">
+	<h2>修改头像(双指旋转和双指缩放)</h2>
+
+	<div id="clipArea"></div>
+	<button id="upload2">选择图片</button>
+    <button id="clipBtn">上传图片</button>	
+	<input type="file" id="file" style="opacity: 0;position: fixed;bottom: -100px">
+</div>
+<img src="" title="upload.jpg" fileName="" id="hit" style="display:none;z-index: 9">
+<script src="__PUBLIC__/js/jquery.min.js"></script>
+<script src="__TPL__/js/sonic.js"></script>
+<script src="__TPL__/js/comm.js"></script>
+<script src="__TPL__/js/hammer.js"></script>
+<script src="__TPL__/js/iscroll-zoom.js"></script>
+<script src="__TPL__/js/jquery.photoClip.js?v=1"></script>
+<script>
+var hammer = '';
+var currentIndex = 0;
+var body_width = $('body').width();
+var body_height = $('body').height();
+
+$("#clipArea").photoClip({
+	width: body_width * 0.6,
+	height: body_width * 0.6,
+	file: "#file",
+	view: "#hit",
+	ok: "#clipBtn",
+	loadStart: function () {
+		//console.log("照片读取中");
+		$('.lazy_tip span').text('');
+		$('.lazy_cover,.lazy_tip').show();
+	},
+	loadComplete: function () {
+		//console.log("照片读取完成");
+		$('.lazy_cover,.lazy_tip').hide();
+	},
+	clipFinish: function (dataURL) {			
+		$('#hit').attr('src', dataURL);
+		saveImageInfo();
+	}
+});
+ 
+//图片上传
+function saveImageInfo() {
+	var filename = $('#hit').attr('fileName');
+	var img_data = $('#hit').attr('src');
+	
+	$.post("{:url('user/update_headimg2')}", {image: img_data}, function (data) {
+		if (data != '') {			
+			alert(data);
+			window.location.href="{:url('user/profile')}";
+			//history.go(-2);
+			//location.reload();
+			//history.go(-1);
+			//location.href=document.referrer;
+//			console.info(data);
+			//data 为返回文件名；
+			//alert('提交成功');
+		}
+	});
+}
+
+/*获取文件拓展名*/
+function getFileExt(str) {
+	var d = /\.[^\.]+$/.exec(str);
+	return d;
+}
+
+//图片上传结束
+$(function () {
+	$('#upload2').on('touchstart', function () {
+		//图片上传按钮	
+		$('#file').click();
+	})			
+})
+</script>
+<div id="cover"></div>
+</div>
+<!-- #BeginLibraryItem "/library/search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+</body></html>

@@ -1,0 +1,21 @@
+body { padding-bottom: 60px; }
+
+.avatar-wrapper { padding: 15px 0; }
+.avatar-wrapper .user-avatar img { width: 100px; height: 100px; border-radius: 50%; margin-bottom: 8px; }
+.avatar-wrapper h5 { font-weight: bold; font-size: 15px; color: #d43f3a; }
+
+.form-group label { font-weight: normal; color: #999; }
+/*create-step*/
+.create-step { background-color: #f2f2f2; border-bottom: 1px solid #dedede; padding: 5px 15px; 
+margin: -15px -15px 15px -15px; -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); }
+.create-step ul { list-style: none outside; margin: 0; padding: 0; display:-moz-box; display:-webkit-box; display:box; width: 100%; }
+.create-step ul li { -moz-box-flex:1; -webkit-box-flex:1; box-flex:1; text-align: center; font-size: 13px; }
+.create-step ul li a { display: block; color: #666; line-height: 30px; text-decoration: none; }
+.create-step ul li.active a { background: #fff; border-radius: 4px; }
+
+
+.page-operate { position: fixed; z-index: 1000; left: 0; bottom: 0; right: 0; padding: 5px 0; background: #eee; border-top: 1px solid #d0d0d0; }
+.page-operate .btn-default { color: #337ab7; }
+
+.create-wrapper .img-qrcode { margin: 0 auto; }
